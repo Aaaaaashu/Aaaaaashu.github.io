@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>digital-image-processing | Hexo</title>
+  <meta name="author" content="John Doe">
+
+  
+  <meta name="description" content="PPM图像格式是由Jef Poskanzer 大叔，在我出生那一年，也就是1991年所创造的，碰巧的是PPM也是天蝎座。  
+PPM（Portable Pixmap Format）还有两位兄长，大哥名叫「PBM」，二哥人称「PGM」，他们三兄弟各有所长，下面为你们一一介绍：PBM 是位图（bitma">
+  
+  
+
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  
+</head>
+
+<body>
+  <header id="header" class="inner"><nav>
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+  <div id="content" class="inner"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <header>
+    
+  
+    <h1 class="title">digital-image-processing</h1>
+  
+
+    <time datetime="2014-03-02T17:08:08.000Z">
+  <span class="day">3</span><span class="month">Mar</span>
+</time>
+  </header>
+  <div class="entry-content">
+    
+      <p>PPM图像格式是由Jef Poskanzer 大叔，在我出生那一年，也就是1991年所创造的，碰巧的是PPM也是天蝎座。  </p>
+<p>PPM（Portable Pixmap Format）还有两位兄长，大哥名叫「PBM」，二哥人称「PGM」，他们三兄弟各有所长，下面为你们一一介绍：<br>PBM 是位图（bitmap），仅有黑与白，没有灰<br>PGM 是灰度图（grayscale）<br>PPM 是通过RGB三种颜色显现的图像（pixmaps）</p>
+<p>每个图像文件的开头都通过2个字节「magic number」来表明文件格式的类型（PBM, PGM, PPM），以及编码方式（ASCII 或 Binary），magic number分别为P1、P2、P3、P4、P5、P6。</p>
+<p>Magic Number    Type    Encoding<br>P1    Bitmap    ASCII<br>P2    Graymap    ASCII<br>P3    Pixmap    ASCII<br>P4    Bitmap    Binary<br>P5    Graymap    Binary<br>P6    Pixmap    Binary<br>编码方式：<br>ASCII格式适合人类阅读理解，可以用文本编辑器打开，读取对应图像的数据（比如PPM格式的RGB值）。 Binary格式适合机器阅读，按照二进制形式，顺序存储图像信息，不用空格分隔，所以图像处理起来更有效率，占用空间容量更少（由于缺少空格）。</p>
+<p>下面着重讲解PPM格式：  </p>
+<p>PPM图像格式分为两部分，分别为头部分和图像数据部分。  </p>
+<p>头部分：由3部分组成，通过换行或空格进行分割，一般PPM的标准是空格。<br>第1部分：P3或P6，指明PPM的编码格式，<br>第2部分：图像的宽度和高度，通过ASCII表示，<br>第3部分：最大像素值，0-255字节表示。  </p>
+<p>图像数据部分：<br>ASCII格式：<br>Binary格式：PPM用24bits代表每一个像素，红绿蓝分别占用8bits。  </p>
+<p>栗子：<br>P3 3 2 255<br>255 0 0 0 255 0 0 0 255 255 255 0 255 255 255 0 0 0  </p>
+<p>image<br>image  </p>
+<p>//P3: PPM编码格式为ASCII<br>//3: 3列像素<br>//2: 2行像素<br>//255: 最大像素值  </p>
+
+    
+    
+    <footer class="meta">
+      
+      
+      
+    </footer>
+    
+  </div>
+  
+<section id="comment">
+  <div id="disqus_thread" aria-live="polite">
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</article></div>
+  <footer id="footer" class="inner"><div class="social alignright">
+  
+  
+  
+  
+  <a class="rss" href="/atom.xml" title="RSS">RSS</a>
+</div>
+<p>
+  
+  &copy; 2014 John Doe
+  
+</p>
+<div class="clearfix"></div></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'true';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+<div id="phasebeam">
+  <canvas></canvas>
+  <canvas></canvas>
+  <canvas></canvas>
+</div>
+<script src="/js/phasebeam.js"></script>
+</body>
+</html>

@@ -1,0 +1,542 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="author" content="John Doe">
+
+  
+  
+
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  
+</head>
+
+<body>
+  <header id="header" class="inner"><nav>
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+  <div id="content" class="inner">
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <header>
+    
+  
+    <h1 class="title"><a href="/2014/03/03/digital-image-processing/">digital-image-processing</a></h1>
+  
+
+    <time datetime="2014-03-02T17:08:08.000Z">
+  <span class="day">3</span><span class="month">Mar</span>
+</time>
+  </header>
+  <div class="entry-content">
+    
+      <p>PPM图像格式是由Jef Poskanzer 大叔，在我出生那一年，也就是1991年所创造的，碰巧的是PPM也是天蝎座。  </p>
+<p>PPM（Portable Pixmap Format）还有两位兄长，大哥名叫「PBM」，二哥人称「PGM」，他们三兄弟各有所长，下面为你们一一介绍：<br>PBM 是位图（bitmap），仅有黑与白，没有灰<br>PGM 是灰度图（grayscale）<br>PPM 是通过RGB三种颜色显现的图像（pixmaps）</p>
+<p>每个图像文件的开头都通过2个字节「magic number」来表明文件格式的类型（PBM, PGM, PPM），以及编码方式（ASCII 或 Binary），magic number分别为P1、P2、P3、P4、P5、P6。</p>
+<p>Magic Number    Type    Encoding<br>P1    Bitmap    ASCII<br>P2    Graymap    ASCII<br>P3    Pixmap    ASCII<br>P4    Bitmap    Binary<br>P5    Graymap    Binary<br>P6    Pixmap    Binary<br>编码方式：<br>ASCII格式适合人类阅读理解，可以用文本编辑器打开，读取对应图像的数据（比如PPM格式的RGB值）。 Binary格式适合机器阅读，按照二进制形式，顺序存储图像信息，不用空格分隔，所以图像处理起来更有效率，占用空间容量更少（由于缺少空格）。</p>
+<p>下面着重讲解PPM格式：  </p>
+<p>PPM图像格式分为两部分，分别为头部分和图像数据部分。  </p>
+<p>头部分：由3部分组成，通过换行或空格进行分割，一般PPM的标准是空格。<br>第1部分：P3或P6，指明PPM的编码格式，<br>第2部分：图像的宽度和高度，通过ASCII表示，<br>第3部分：最大像素值，0-255字节表示。  </p>
+<p>图像数据部分：<br>ASCII格式：<br>Binary格式：PPM用24bits代表每一个像素，红绿蓝分别占用8bits。  </p>
+<p>栗子：<br>P3 3 2 255<br>255 0 0 0 255 0 0 0 255 255 255 0 255 255 255 0 0 0  </p>
+<p>image<br>image  </p>
+<p>//P3: PPM编码格式为ASCII<br>//3: 3列像素<br>//2: 2行像素<br>//255: 最大像素值  </p>
+
+    
+    
+    <footer class="meta">
+      
+      
+      
+    </footer>
+    
+  </div>
+  
+</article>
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <header>
+    
+  
+    <h1 class="title"><a href="/2014/03/03/hello-world/">Hello World</a></h1>
+  
+
+    <time datetime="2014-03-02T16:20:21.000Z">
+  <span class="day">3</span><span class="month">Mar</span>
+</time>
+  </header>
+  <div class="entry-content">
+    
+      <p>Welcome to <a href="http://zespia.tw/hexo" target="_blank">Hexo</a>! This is your very first post. Check <a href="http://zespia.tw/hexo/docs" target="_blank">documentation</a> to learn how to use.</p>
+
+    
+    
+    <footer class="meta">
+      
+      
+      
+    </footer>
+    
+  </div>
+  
+</article>
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <header>
+    
+  
+    <h1 class="title"><a href="/2014/02/25/java-inner-class/">Java内部类解析</a></h1>
+  
+
+    <time datetime="2014-02-25T15:07:37.000Z">
+  <span class="day">25</span><span class="month">Feb</span>
+</time>
+  </header>
+  <div class="entry-content">
+    
+      
+    
+    
+    <footer class="meta">
+      
+      
+      
+    </footer>
+    
+  </div>
+  
+</article>
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <header>
+    
+  
+    <h1 class="title"><a href="/2014/02/24/hexo-tutorial/">Hexo Tutorial</a></h1>
+  
+
+    <time datetime="2014-02-24T15:05:19.000Z">
+  <span class="day">24</span><span class="month">Feb</span>
+</time>
+  </header>
+  <div class="entry-content">
+    
+      <p>创建博客：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>hexo <span class="keyword">new</span> <span class="string">"title"</span>
+</pre></td></tr></table></figure>
+
+<p>部署博客：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">hexo</span> <span class="comment">deploy</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">generate</span>
+</pre></td></tr></table></figure>
+
+<p>Backtick Code Block：  </p>
+<figure class="highlight c"><figcaption><span>malloc </span></figcaption><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="code"><pre>
+<span class="preprocessor">#include &lt;stdio.h&gt;   </span>
+<span class="preprocessor">#include &lt;stdlib.h&gt; </span>
+ 
+<span class="keyword">int</span> main() 
+{
+ 
+    <span class="comment">/* Allocate an array of four integers. */</span>
+    <span class="keyword">int</span> *pa = <span class="built_in">malloc</span>(<span class="number">4</span>*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));
+    <span class="keyword">if</span> (pa == NULL) {
+       <span class="built_in">printf</span>(<span class="string">"malloc() failed in file %s at line # %d"</span>, __FILE__,__LINE__);
+       <span class="built_in">exit</span>(<span class="number">1</span>);
+    }
+ 
+    <span class="comment">/* Initialize array A with values. */</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> ndx=<span class="number">0</span>; ndx &lt; <span class="number">4</span>; ndx++)
+        pa[ndx] = ndx;
+ 
+    <span class="comment">/* Print one of the array elements. */</span>
+    <span class="built_in">printf</span>(<span class="string">"pa[3] = %d\n"</span>, pa[<span class="number">3</span>]);
+ 
+    <span class="comment">/* Deallocate array pa. */</span>
+    <span class="built_in">free</span>(pa);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</pre></td></tr></table></figure>
+
+<p>Swig Code Block:  </p>
+<figure class="highlight java"><figcaption><span>factory </span></figcaption><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="code"><pre><span class="keyword">int</span> main() 
+{
+ 
+    <span class="comment">/* Allocate an array of four integers. */</span>
+    <span class="keyword">int</span> *pa = malloc(<span class="number">4</span>*sizeof(<span class="keyword">int</span>));
+    <span class="keyword">if</span> (pa == NULL) {
+       printf(<span class="string">"malloc() failed in file %s at line # %d"</span>, __FILE__,__LINE__);
+       exit(<span class="number">1</span>);
+    }
+ 
+    <span class="comment">/* Initialize array A with values. */</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> ndx=<span class="number">0</span>; ndx &lt; <span class="number">4</span>; ndx++)
+        pa[ndx] = ndx;
+ 
+    <span class="comment">/* Print one of the array elements. */</span>
+    printf(<span class="string">"pa[3] = %d\n"</span>, pa[<span class="number">3</span>]);
+ 
+    <span class="comment">/* Deallocate array pa. */</span>
+    free(pa);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</pre></td></tr></table></figure>
+
+
+<p>文件头的冒号「：」后面必须要有空格：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="label">title:</span> postName <span class="preprocessor">#文章页面上的显示名称，可以任意修改，不会出现在URL中</span>
+<span class="label">date:</span> <span class="number">2013</span>-<span class="number">12</span>-<span class="number">02</span> <span class="number">15</span>:<span class="number">30</span>:<span class="number">16</span> <span class="preprocessor">#文章生成时间，一般不改，当然也可以任意修改</span>
+<span class="label">categories:</span> <span class="preprocessor">#文章分类目录，可以为空，注意:后面有个空格</span>
+<span class="label">tags:</span> <span class="preprocessor">#文章标签，可空，多标签请用格式[tag1,tag2,tag3]，注意:后面有个空格</span>
+---
+这里开始使用markdown格式输入你的正文。
+</pre></td></tr></table></figure>
+
+<p>自定义主页：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>hexo <span class="keyword">new</span> page <span class="string">"about"</span>
+</pre></td></tr></table></figure>
+
+<p>在hexo\source\下会生成about目录，里面有个index.md，直接编辑就可以了，然后在主题的_config.yml中将其配置显示出来。
+上述步骤，也可以手工生成，在hexo\source\下手工新建about和index.md也是完全等价的。</p>
+<p>Image:</p>
+<p>This plugin helps you insert an image in posts with specified size.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="tag">&lt;<span class="title">notextile</span>&gt;</span>1<span class="tag">&lt;/<span class="title">notextile</span>&gt;</span>
+</pre></td></tr></table></figure>
+
+
+    
+    
+    <footer class="meta">
+      
+      
+      
+    </footer>
+    
+  </div>
+  
+</article>
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <header>
+    
+  
+    <h1 class="title"><a href="/2014/02/12/android-design/">Android Design翻译</a></h1>
+  
+
+    <time datetime="2014-02-12T15:04:04.000Z">
+  <span class="day">12</span><span class="month">Feb</span>
+</time>
+  </header>
+  <div class="entry-content">
+    
+      <p>留坑</p>
+
+    
+    
+    <footer class="meta">
+      
+      
+      
+    </footer>
+    
+  </div>
+  
+</article>
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <header>
+    
+  
+    <h1 class="title"><a href="/2014/02/10/mac-operating/">写给媳妇看的Mac操作手册</a></h1>
+  
+
+    <time datetime="2014-02-10T15:02:19.000Z">
+  <span class="day">10</span><span class="month">Feb</span>
+</time>
+  </header>
+  <div class="entry-content">
+    
+      <p>媳妇，虽然我知道现在你还不需要使用Mac，<br>但是，当夫君使用如此美妙产品后（当然没你美，没你妙），<br>我就想到，挣钱后就给俺媳妇整个，享受生活的美妙。  </p>
+<p>所以，我决定写一份媳妇也能看明白的「Mac操作手册」，<br>为了俺媳妇，为了千千万万别人的媳妇...  </p>
+<p>先挖一个坑，将来再填。</p>
+
+    
+    
+    <footer class="meta">
+      
+      
+      
+    </footer>
+    
+  </div>
+  
+</article>
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <header>
+    
+  
+    <h1 class="title"><a href="/2013/12/31/2013-summary/">2013 Summary</a></h1>
+  
+
+    <time datetime="2013-12-31T14:57:39.000Z">
+  <span class="day">31</span><span class="month">Dec</span>
+</time>
+  </header>
+  <div class="entry-content">
+    
+      <p>一年前的现在，大概是王家卫的「一代宗师」刚上映不久，<br>我去看了，像大多数王家卫的电影一样，台词集结出来，可以成为一本语录。<br>里头有这样一句台词「念念不忘，必有回响」。<br>「念念不忘，必有回响」，这是我在豆瓣记下的第一篇私人日记的标题。  </p>
+
+    
+    
+    <footer class="meta">
+      
+      
+      
+    </footer>
+    
+  </div>
+  
+</article>
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <header>
+    
+  
+    <h1 class="title"><a href="/2013/08/15/tietie-work/">贴贴，实习经历</a></h1>
+  
+
+    <time datetime="2013-08-15T13:02:02.000Z">
+  <span class="day">15</span><span class="month">Aug</span>
+</time>
+  </header>
+  <div class="entry-content">
+    
+      <p>这个下雨的清晨 ，我从南方的这个城市准备去南方的那个城市。<br>这首歌是李志的「<a href="http://music.163.com/#/song?id=26508238" target="_blank">春末的南方城市</a>」,也是我这个夏天的写照。</p>
+
+    
+    
+    <footer class="meta">
+      
+      
+      
+    </footer>
+    
+  </div>
+  
+</article>
+
+
+<nav id="pagenavi">
+  
+  
+  <div class="clearfix"></div>
+</nav></div>
+  <footer id="footer" class="inner"><div class="social alignright">
+  
+  
+  
+  
+  <a class="rss" href="/atom.xml" title="RSS">RSS</a>
+</div>
+<p>
+  
+  &copy; 2014 John Doe
+  
+</p>
+<div class="clearfix"></div></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'true';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+<div id="phasebeam">
+  <canvas></canvas>
+  <canvas></canvas>
+  <canvas></canvas>
+</div>
+<script src="/js/phasebeam.js"></script>
+</body>
+</html>

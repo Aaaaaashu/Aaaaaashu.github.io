@@ -1,0 +1,285 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo Tutorial | Hexo</title>
+  <meta name="author" content="John Doe">
+
+  
+  <meta name="description" content="创建博客：
+1
+hexo new &quot;title&quot;
+
+
+部署博客：
+1
+hexo deploy --generate
+
+
+Backtick Code Block：  
+malloc 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+">
+  
+  
+
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  
+</head>
+
+<body>
+  <header id="header" class="inner"><nav>
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+  <div id="content" class="inner"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <header>
+    
+  
+    <h1 class="title">Hexo Tutorial</h1>
+  
+
+    <time datetime="2014-02-24T15:05:19.000Z">
+  <span class="day">24</span><span class="month">Feb</span>
+</time>
+  </header>
+  <div class="entry-content">
+    
+      <p>创建博客：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>hexo <span class="keyword">new</span> <span class="string">"title"</span>
+</pre></td></tr></table></figure>
+
+<p>部署博客：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">hexo</span> <span class="comment">deploy</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">generate</span>
+</pre></td></tr></table></figure>
+
+<p>Backtick Code Block：  </p>
+<figure class="highlight c"><figcaption><span>malloc </span></figcaption><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="code"><pre>
+<span class="preprocessor">#include &lt;stdio.h&gt;   </span>
+<span class="preprocessor">#include &lt;stdlib.h&gt; </span>
+ 
+<span class="keyword">int</span> main() 
+{
+ 
+    <span class="comment">/* Allocate an array of four integers. */</span>
+    <span class="keyword">int</span> *pa = <span class="built_in">malloc</span>(<span class="number">4</span>*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));
+    <span class="keyword">if</span> (pa == NULL) {
+       <span class="built_in">printf</span>(<span class="string">"malloc() failed in file %s at line # %d"</span>, __FILE__,__LINE__);
+       <span class="built_in">exit</span>(<span class="number">1</span>);
+    }
+ 
+    <span class="comment">/* Initialize array A with values. */</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> ndx=<span class="number">0</span>; ndx &lt; <span class="number">4</span>; ndx++)
+        pa[ndx] = ndx;
+ 
+    <span class="comment">/* Print one of the array elements. */</span>
+    <span class="built_in">printf</span>(<span class="string">"pa[3] = %d\n"</span>, pa[<span class="number">3</span>]);
+ 
+    <span class="comment">/* Deallocate array pa. */</span>
+    <span class="built_in">free</span>(pa);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</pre></td></tr></table></figure>
+
+<p>Swig Code Block:  </p>
+<figure class="highlight java"><figcaption><span>factory </span></figcaption><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="code"><pre><span class="keyword">int</span> main() 
+{
+ 
+    <span class="comment">/* Allocate an array of four integers. */</span>
+    <span class="keyword">int</span> *pa = malloc(<span class="number">4</span>*sizeof(<span class="keyword">int</span>));
+    <span class="keyword">if</span> (pa == NULL) {
+       printf(<span class="string">"malloc() failed in file %s at line # %d"</span>, __FILE__,__LINE__);
+       exit(<span class="number">1</span>);
+    }
+ 
+    <span class="comment">/* Initialize array A with values. */</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> ndx=<span class="number">0</span>; ndx &lt; <span class="number">4</span>; ndx++)
+        pa[ndx] = ndx;
+ 
+    <span class="comment">/* Print one of the array elements. */</span>
+    printf(<span class="string">"pa[3] = %d\n"</span>, pa[<span class="number">3</span>]);
+ 
+    <span class="comment">/* Deallocate array pa. */</span>
+    free(pa);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</pre></td></tr></table></figure>
+
+
+<p>文件头的冒号「：」后面必须要有空格：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="label">title:</span> postName <span class="preprocessor">#文章页面上的显示名称，可以任意修改，不会出现在URL中</span>
+<span class="label">date:</span> <span class="number">2013</span>-<span class="number">12</span>-<span class="number">02</span> <span class="number">15</span>:<span class="number">30</span>:<span class="number">16</span> <span class="preprocessor">#文章生成时间，一般不改，当然也可以任意修改</span>
+<span class="label">categories:</span> <span class="preprocessor">#文章分类目录，可以为空，注意:后面有个空格</span>
+<span class="label">tags:</span> <span class="preprocessor">#文章标签，可空，多标签请用格式[tag1,tag2,tag3]，注意:后面有个空格</span>
+---
+这里开始使用markdown格式输入你的正文。
+</pre></td></tr></table></figure>
+
+<p>自定义主页：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>hexo <span class="keyword">new</span> page <span class="string">"about"</span>
+</pre></td></tr></table></figure>
+
+<p>在hexo\source\下会生成about目录，里面有个index.md，直接编辑就可以了，然后在主题的_config.yml中将其配置显示出来。
+上述步骤，也可以手工生成，在hexo\source\下手工新建about和index.md也是完全等价的。</p>
+<p>Image:</p>
+<p>This plugin helps you insert an image in posts with specified size.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="tag">&lt;<span class="title">notextile</span>&gt;</span>1<span class="tag">&lt;/<span class="title">notextile</span>&gt;</span>
+</pre></td></tr></table></figure>
+
+
+    
+    
+    <footer class="meta">
+      
+      
+      
+    </footer>
+    
+  </div>
+  
+<section id="comment">
+  <div id="disqus_thread" aria-live="polite">
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</article></div>
+  <footer id="footer" class="inner"><div class="social alignright">
+  
+  
+  
+  
+  <a class="rss" href="/atom.xml" title="RSS">RSS</a>
+</div>
+<p>
+  
+  &copy; 2014 John Doe
+  
+</p>
+<div class="clearfix"></div></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'true';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+<div id="phasebeam">
+  <canvas></canvas>
+  <canvas></canvas>
+  <canvas></canvas>
+</div>
+<script src="/js/phasebeam.js"></script>
+</body>
+</html>
