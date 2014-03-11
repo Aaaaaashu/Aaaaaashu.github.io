@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>mysql-issues | Hexo</title>
+  <meta name="author" content="John Doe">
+
+  
+  <meta name="description" content="Mac下的Mysql安装：  
+解决Mysql中文乱码：  
+以基于Servlet+Mysql构建网站为例，网页/数据库出现中文乱码的原因：数据在流动的任意节点处，编码不一致，出现乱码。数据流动的任意节点，分为两块，分别是Web和数据库：-----Web：网页、Jsp页面、Java代码文件、Tomc">
+  
+  
+
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  
+</head>
+
+<body>
+  <header id="header" class="inner"><nav>
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+  <div id="content" class="inner"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <header>
+    
+  
+    <h1 class="title">mysql-issues</h1>
+  
+
+    <time datetime="2014-03-11T04:53:01.000Z">
+  <span class="day">11</span><span class="month">Mar</span>
+</time>
+  </header>
+  <div class="entry-content">
+    
+      <p>Mac下的Mysql安装：  </p>
+<p>解决Mysql中文乱码：  </p>
+<p>以基于Servlet+Mysql构建网站为例，网页/数据库出现中文乱码的原因：数据在流动的任意节点处，编码不一致，出现乱码。<br>数据流动的任意节点，分为两块，分别是Web和数据库：<br>-----Web：网页、Jsp页面、Java代码文件、Tomcat读取的web.xml<br>-----数据库：Mysql的client/server/connection以及数据库/表/字段  </p>
+<p>要使乱码不出现，须使任意的数据节点编码一致，在此之前先了解以下知识：<br>关于字符集：Laruence写的<a href="(http://www.laruence.com/2008/01/05/12.html)">深入Mysql字符集设置</a>，以及<a href="(http://hi.baidu.com/sppeivan/item/358e6fc07e9620320831c621)">Mysql字符集设置详解</a>。<br>关于编码：<a href="(http://www.dedeadmin.com/?p=132)">GBK和UTF-8有什么区别？</a>，以及<a href="(http://undefinedblog.com/2013/04/everything-a-developer-should-know-about-font-n-encoding/)">前端工程师与字符编码及更多</a>。</p>
+<p>在学习上面关于字符集以及编码的知识后，下面我们就谈谈如何解决Mysql中文乱码（Web方面的可以自行Google，大同小异）。<br>1.将mysql-version/support-files/my-default.cnf 复制一份到 /etc 下面，并改名为my.cnf （Window下叫my.ini）<br>2.「Mysql的client/server/connection以及数据库/表/字段」编码设置为utf8，添加以下内容至my.cnf中  </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre>[client]
+default-character-<span class="operator"><span class="keyword">set</span>=utf8
+
+[mysql]
+<span class="keyword">default</span>-<span class="keyword">character</span>-<span class="keyword">set</span>=utf8
+
+[mysqld]
+<span class="keyword">collation</span>-server = utf8_unicode_ci  
+init-<span class="keyword">connect</span>=<span class="string">'SET NAMES utf8'</span>  
+<span class="keyword">character</span>-<span class="keyword">set</span>-server = utf8</span>
+</pre></td></tr></table></figure>
+
+<p>4.重启Mysql，进入Mysql，输入show variables like &#39;char%’;      </p>
+<p>5.在保证所输入数据库的内容格式为utf8的情况下，一般可以解决Mysql中文乱码。    </p>
+<p>更多关于Mysql设置utf8，以及修改my.cnf的内容参见<a href="(http://stackoverflow.com/questions/3513773/change-mysql-default-character-set-to-utf8-in-my-cnf)">Stack Overflow</a>上的讨论。  </p>
+
+    
+    
+    <footer class="meta">
+      
+      
+      
+    </footer>
+    
+  </div>
+  
+<section id="comment">
+  <div id="disqus_thread" aria-live="polite">
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</article></div>
+  <footer id="footer" class="inner"><div class="social alignright">
+  
+  
+  
+  
+  <a class="rss" href="/atom.xml" title="RSS">RSS</a>
+</div>
+<p>
+  
+  &copy; 2014 John Doe
+  
+</p>
+<div class="clearfix"></div></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'true';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+<div id="phasebeam">
+  <canvas></canvas>
+  <canvas></canvas>
+  <canvas></canvas>
+</div>
+<script src="/js/phasebeam.js"></script>
+</body>
+</html>
