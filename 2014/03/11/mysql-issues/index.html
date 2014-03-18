@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>mysql-issues | Hexo</title>
-  <meta name="author" content="John Doe">
+  <title>Mysql配置的二三事 | 饭醉记录</title>
+  <meta name="author" content="ORANGEHAT">
 
   
   <meta name="description" content="Mac下的Mysql安装：  
 解决Mysql中文乱码：  
-以基于Servlet+Mysql构建网站为例，网页/数据库出现中文乱码的原因：数据在流动的任意节点处，编码不一致，出现乱码。数据流动的任意节点，分为两块，分别是Web和数据库：-----Web：网页、Jsp页面、Java代码文件、Tomc">
+以基于Servlet+Mysql构建网站为例，网页/数据库出现中文乱码的原因：数据在流动的任意节点处，编码不一致，出现乱码。数据流动的任意节点，分为两块，分别是Web和数据库：-----Web：网页、Jsp页面、Java代码文件、Tomcat读取的web.xml-----数据库：Mysql的client/server/connection以及数据库/表/字段  
+要使乱码不出现，须使任意的数据节点编码一致，在此之前先了解以下知识：关于字符集：Laruence写的深入Mysql字符集设置，以及Mysql字符集设置详解。关于编码：GBK和UTF-8有什么区别？，以及前端工程师与字符编码及更多。">
   
   
 
-  <link rel="alternate" href="true" title="Hexo" type="application/atom+xml">
+  <link rel="alternate" href="true" title="饭醉记录" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
@@ -47,7 +48,7 @@
   <header>
     
   
-    <h1 class="title">mysql-issues</h1>
+    <h1 class="title">Mysql配置的二三事</h1>
   
 
     <time datetime="2014-03-11T04:53:01.000Z">
@@ -60,6 +61,8 @@
 <p>解决Mysql中文乱码：  </p>
 <p>以基于Servlet+Mysql构建网站为例，网页/数据库出现中文乱码的原因：数据在流动的任意节点处，编码不一致，出现乱码。<br>数据流动的任意节点，分为两块，分别是Web和数据库：<br>-----Web：网页、Jsp页面、Java代码文件、Tomcat读取的web.xml<br>-----数据库：Mysql的client/server/connection以及数据库/表/字段  </p>
 <p>要使乱码不出现，须使任意的数据节点编码一致，在此之前先了解以下知识：<br>关于字符集：Laruence写的<a href="(http://www.laruence.com/2008/01/05/12.html)">深入Mysql字符集设置</a>，以及<a href="(http://hi.baidu.com/sppeivan/item/358e6fc07e9620320831c621)">Mysql字符集设置详解</a>。<br>关于编码：<a href="(http://www.dedeadmin.com/?p=132)">GBK和UTF-8有什么区别？</a>，以及<a href="(http://undefinedblog.com/2013/04/everything-a-developer-should-know-about-font-n-encoding/)">前端工程师与字符编码及更多</a>。</p>
+<a id="more"></a>
+
 <p>在学习上面关于字符集以及编码的知识后，下面我们就谈谈如何解决Mysql中文乱码（Web方面的可以自行Google，大同小异）。<br>1.将mysql-version/support-files/my-default.cnf 复制一份到 /etc 下面，并改名为my.cnf （Window下叫my.ini）<br>2.「Mysql的client/server/connection以及数据库/表/字段」编码设置为utf8，添加以下内容至my.cnf中  </p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
@@ -117,7 +120,7 @@ init-<span class="keyword">connect</span>=<span class="string">'SET NAMES utf8'<
 </div>
 <p>
   
-  &copy; 2014 John Doe
+  &copy; 2014 ORANGEHAT
   
 </p>
 <div class="clearfix"></div></footer>

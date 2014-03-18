@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo</title>
-  <meta name="author" content="John Doe">
+  <title>饭醉记录</title>
+  <meta name="author" content="ORANGEHAT">
 
   
   
 
-  <link rel="alternate" href="true" title="Hexo" type="application/atom+xml">
+  <link rel="alternate" href="true" title="饭醉记录" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
@@ -44,7 +44,7 @@
   <header>
     
   
-    <h1 class="title"><a href="/2014/03/11/mysql-issues/">mysql-issues</a></h1>
+    <h1 class="title"><a href="/2014/03/11/mysql-issues/">Mysql配置的二三事</a></h1>
   
 
     <time datetime="2014-03-11T04:53:01.000Z">
@@ -57,32 +57,6 @@
 <p>解决Mysql中文乱码：  </p>
 <p>以基于Servlet+Mysql构建网站为例，网页/数据库出现中文乱码的原因：数据在流动的任意节点处，编码不一致，出现乱码。<br>数据流动的任意节点，分为两块，分别是Web和数据库：<br>-----Web：网页、Jsp页面、Java代码文件、Tomcat读取的web.xml<br>-----数据库：Mysql的client/server/connection以及数据库/表/字段  </p>
 <p>要使乱码不出现，须使任意的数据节点编码一致，在此之前先了解以下知识：<br>关于字符集：Laruence写的<a href="(http://www.laruence.com/2008/01/05/12.html)">深入Mysql字符集设置</a>，以及<a href="(http://hi.baidu.com/sppeivan/item/358e6fc07e9620320831c621)">Mysql字符集设置详解</a>。<br>关于编码：<a href="(http://www.dedeadmin.com/?p=132)">GBK和UTF-8有什么区别？</a>，以及<a href="(http://undefinedblog.com/2013/04/everything-a-developer-should-know-about-font-n-encoding/)">前端工程师与字符编码及更多</a>。</p>
-<p>在学习上面关于字符集以及编码的知识后，下面我们就谈谈如何解决Mysql中文乱码（Web方面的可以自行Google，大同小异）。<br>1.将mysql-version/support-files/my-default.cnf 复制一份到 /etc 下面，并改名为my.cnf （Window下叫my.ini）<br>2.「Mysql的client/server/connection以及数据库/表/字段」编码设置为utf8，添加以下内容至my.cnf中  </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-</pre></td><td class="code"><pre>[client]
-default-character-<span class="operator"><span class="keyword">set</span>=utf8
-
-[mysql]
-<span class="keyword">default</span>-<span class="keyword">character</span>-<span class="keyword">set</span>=utf8
-
-[mysqld]
-<span class="keyword">collation</span>-server = utf8_unicode_ci  
-init-<span class="keyword">connect</span>=<span class="string">'SET NAMES utf8'</span>  
-<span class="keyword">character</span>-<span class="keyword">set</span>-server = utf8</span>
-</pre></td></tr></table></figure>
-
-<p>4.重启Mysql，进入Mysql，输入show variables like &#39;char%’;      </p>
-<p>5.在保证所输入数据库的内容格式为utf8的情况下，一般可以解决Mysql中文乱码。    </p>
-<p>更多关于Mysql设置utf8，以及修改my.cnf的内容参见<a href="(http://stackoverflow.com/questions/3513773/change-mysql-default-character-set-to-utf8-in-my-cnf)">Stack Overflow</a>上的讨论。  </p>
 
     
     
@@ -113,7 +87,7 @@ init-<span class="keyword">connect</span>=<span class="string">'SET NAMES utf8'<
   <header>
     
   
-    <h1 class="title"><a href="/2014/03/03/digital-image-processing/">digital-image-processing</a></h1>
+    <h1 class="title"><a href="/2014/03/03/digital-image-processing/">数字图像处理-PPM图像格式</a></h1>
   
 
     <time datetime="2014-03-02T17:08:08.000Z">
@@ -124,95 +98,7 @@ init-<span class="keyword">connect</span>=<span class="string">'SET NAMES utf8'<
     
       <p>PPM图像格式是由Jef Poskanzer 大叔，在我出生那一年，也就是1991年所创造的，碰巧的是PPM也是天蝎座。  </p>
 <p>PPM（Portable Pixmap Format）还有两位兄长，大哥名叫「PBM」，二哥人称「PGM」，他们三兄弟各有所长，下面为你们一一介绍：<br>PBM 是位图（bitmap），仅有黑与白，没有灰<br>PGM 是灰度图（grayscale）<br>PPM 是通过RGB三种颜色显现的图像（pixmaps）</p>
-<p>每个图像文件的开头都通过2个字节「magic number」来表明文件格式的类型（PBM, PGM, PPM），以及编码方式（ASCII 或 Binary），magic number分别为P1、P2、P3、P4、P5、P6。</p>
-<p>Magic Number    Type    Encoding<br>P1    Bitmap    ASCII<br>P2    Graymap    ASCII<br>P3    Pixmap    ASCII<br>P4    Bitmap    Binary<br>P5    Graymap    Binary<br>P6    Pixmap    Binary<br>编码方式：<br>ASCII格式适合人类阅读理解，可以用文本编辑器打开，读取对应图像的数据（比如PPM格式的RGB值）。 Binary格式适合机器阅读，按照二进制形式，顺序存储图像信息，不用空格分隔，所以图像处理起来更有效率，占用空间容量更少（由于缺少空格）。</p>
-<p>下面着重讲解PPM格式：  </p>
-<p>PPM图像格式分为两部分，分别为头部分和图像数据部分。  </p>
-<p>头部分：由3部分组成，通过换行或空格进行分割，一般PPM的标准是空格。<br>第1部分：P3或P6，指明PPM的编码格式，<br>第2部分：图像的宽度和高度，通过ASCII表示，<br>第3部分：最大像素值，0-255字节表示。  </p>
-<p>图像数据部分：<br>ASCII格式：<br>Binary格式：PPM用24bits代表每一个像素，红绿蓝分别占用8bits。  </p>
-<p>栗子：<br>P3 3 2 255<br>255 0 0 0 255 0 0 0 255 255 255 0 255 255 255 0 0 0  </p>
-<p>image<br>image  </p>
-<p>//P3: PPM编码格式为ASCII<br>//3: 3列像素<br>//2: 2行像素<br>//255: 最大像素值  </p>
 
-    
-    
-    <footer class="meta">
-      
-      
-      
-    </footer>
-    
-  </div>
-  
-</article>
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
-    
-  
-    <h1 class="title"><a href="/2014/03/03/hello-world/">Hello World</a></h1>
-  
-
-    <time datetime="2014-03-02T16:20:21.000Z">
-  <span class="day">3</span><span class="month">Mar</span>
-</time>
-  </header>
-  <div class="entry-content">
-    
-      <p>Welcome to <a href="http://zespia.tw/hexo" target="_blank">Hexo</a>! This is your very first post. Check <a href="http://zespia.tw/hexo/docs" target="_blank">documentation</a> to learn how to use.</p>
-
-    
-    
-    <footer class="meta">
-      
-      
-      
-    </footer>
-    
-  </div>
-  
-</article>
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
-    
-  
-    <h1 class="title"><a href="/2014/02/25/java-inner-class/">Java内部类解析</a></h1>
-  
-
-    <time datetime="2014-02-25T15:07:37.000Z">
-  <span class="day">25</span><span class="month">Feb</span>
-</time>
-  </header>
-  <div class="entry-content">
-    
-      
     
     
     <footer class="meta">
@@ -251,116 +137,22 @@ init-<span class="keyword">connect</span>=<span class="string">'SET NAMES utf8'<
   </header>
   <div class="entry-content">
     
-      <p>创建博客：</p>
+      <p><strong>创建博客：</strong>  </p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 </pre></td><td class="code"><pre>hexo <span class="keyword">new</span> <span class="string">"title"</span>
 </pre></td></tr></table></figure>
 
-<p>部署博客：</p>
+<p><strong>部署博客：</strong>  </p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 </pre></td><td class="code"><pre><span class="comment">hexo</span> <span class="comment">deploy</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">generate</span>
 </pre></td></tr></table></figure>
 
-<p>Backtick Code Block：  </p>
-<figure class="highlight c"><figcaption><span>malloc </span></figcaption><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-</pre></td><td class="code"><pre>
-<span class="preprocessor">#include &lt;stdio.h&gt;   </span>
-<span class="preprocessor">#include &lt;stdlib.h&gt; </span>
- 
-<span class="keyword">int</span> main() 
-{
- 
-    <span class="comment">/* Allocate an array of four integers. */</span>
-    <span class="keyword">int</span> *pa = <span class="built_in">malloc</span>(<span class="number">4</span>*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));
-    <span class="keyword">if</span> (pa == NULL) {
-       <span class="built_in">printf</span>(<span class="string">"malloc() failed in file %s at line # %d"</span>, __FILE__,__LINE__);
-       <span class="built_in">exit</span>(<span class="number">1</span>);
-    }
- 
-    <span class="comment">/* Initialize array A with values. */</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> ndx=<span class="number">0</span>; ndx &lt; <span class="number">4</span>; ndx++)
-        pa[ndx] = ndx;
- 
-    <span class="comment">/* Print one of the array elements. */</span>
-    <span class="built_in">printf</span>(<span class="string">"pa[3] = %d\n"</span>, pa[<span class="number">3</span>]);
- 
-    <span class="comment">/* Deallocate array pa. */</span>
-    <span class="built_in">free</span>(pa);
-    <span class="keyword">return</span> <span class="number">0</span>;
-}
+<p><strong>快速部署发布：</strong>  </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>hexo g -<span class="operator">-d</span>
 </pre></td></tr></table></figure>
 
-<p>Swig Code Block:  </p>
-<figure class="highlight java"><figcaption><span>factory </span></figcaption><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-</pre></td><td class="code"><pre><span class="keyword">int</span> main() 
-{
- 
-    <span class="comment">/* Allocate an array of four integers. */</span>
-    <span class="keyword">int</span> *pa = malloc(<span class="number">4</span>*sizeof(<span class="keyword">int</span>));
-    <span class="keyword">if</span> (pa == NULL) {
-       printf(<span class="string">"malloc() failed in file %s at line # %d"</span>, __FILE__,__LINE__);
-       exit(<span class="number">1</span>);
-    }
- 
-    <span class="comment">/* Initialize array A with values. */</span>
-    <span class="keyword">for</span> (<span class="keyword">int</span> ndx=<span class="number">0</span>; ndx &lt; <span class="number">4</span>; ndx++)
-        pa[ndx] = ndx;
- 
-    <span class="comment">/* Print one of the array elements. */</span>
-    printf(<span class="string">"pa[3] = %d\n"</span>, pa[<span class="number">3</span>]);
- 
-    <span class="comment">/* Deallocate array pa. */</span>
-    free(pa);
-    <span class="keyword">return</span> <span class="number">0</span>;
-}
-</pre></td></tr></table></figure>
-
-
-<p>文件头的冒号「：」后面必须要有空格：</p>
+<p><strong>文件头的冒号「：」后面必须要有空格：</strong>  </p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
@@ -375,59 +167,6 @@ init-<span class="keyword">connect</span>=<span class="string">'SET NAMES utf8'<
 这里开始使用markdown格式输入你的正文。
 </pre></td></tr></table></figure>
 
-<p>自定义主页：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>hexo <span class="keyword">new</span> page <span class="string">"about"</span>
-</pre></td></tr></table></figure>
-
-<p>在hexo\source\下会生成about目录，里面有个index.md，直接编辑就可以了，然后在主题的_config.yml中将其配置显示出来。
-上述步骤，也可以手工生成，在hexo\source\下手工新建about和index.md也是完全等价的。</p>
-<p>Image:</p>
-<p>This plugin helps you insert an image in posts with specified size.</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="tag">&lt;<span class="title">notextile</span>&gt;</span>1<span class="tag">&lt;/<span class="title">notextile</span>&gt;</span>
-</pre></td></tr></table></figure>
-
-
-    
-    
-    <footer class="meta">
-      
-      
-      
-    </footer>
-    
-  </div>
-  
-</article>
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
-    
-  
-    <h1 class="title"><a href="/2014/02/12/android-design/">Android Design翻译</a></h1>
-  
-
-    <time datetime="2014-02-12T15:04:04.000Z">
-  <span class="day">12</span><span class="month">Feb</span>
-</time>
-  </header>
-  <div class="entry-content">
-    
-      <p>留坑</p>
 
     
     
@@ -467,9 +206,7 @@ init-<span class="keyword">connect</span>=<span class="string">'SET NAMES utf8'<
   </header>
   <div class="entry-content">
     
-      <p>媳妇，虽然我知道现在你还不需要使用Mac，<br>但是，当夫君使用如此美妙产品后（当然没你美，没你妙），<br>我就想到，挣钱后就给俺媳妇整个，享受生活的美妙。  </p>
-<p>所以，我决定写一份媳妇也能看明白的「Mac操作手册」，<br>为了俺媳妇，为了千千万万别人的媳妇...  </p>
-<p>先挖一个坑，将来再填。</p>
+      <p>挖坑，将来再填。</p>
 
     
     
@@ -510,6 +247,8 @@ init-<span class="keyword">connect</span>=<span class="string">'SET NAMES utf8'<
   <div class="entry-content">
     
       <p>一年前的现在，大概是王家卫的「一代宗师」刚上映不久，<br>我去看了，像大多数王家卫的电影一样，台词集结出来，可以成为一本语录。<br>里头有这样一句台词「念念不忘，必有回响」。<br>「念念不忘，必有回响」，这是我在豆瓣记下的第一篇私人日记的标题。  </p>
+<p>在此之前，读过机械电子工程，念过飞行器制造专业，也当了学校社团的小头目，<br>像大多数人的20岁一样，我也不知道将来想做什么，想成为什么。<br>那时的常态，窝在床上，盯着3.7寸的屏幕，看武侠小说。<br>武侠小说中常有的万金油剧情，少年，奇遇，绝世秘籍，成为盖世大英雄。<br>而我的2013年剧情大概是这样的，中二少年，上网，互联网真屌，想成为一名程序员。  </p>
+<p>想成为一名程序员，有很多理由，也可以没有缘由，就像是冲动，<br>少年的冲动，不需要动机，也不需要任何理由，一点点躁动就足以点燃。  </p>
 
     
     
@@ -550,6 +289,8 @@ init-<span class="keyword">connect</span>=<span class="string">'SET NAMES utf8'<
   <div class="entry-content">
     
       <p>这个下雨的清晨 ，我从南方的这个城市准备去南方的那个城市。<br>这首歌是李志的「<a href="http://music.163.com/#/song?id=26508238" target="_blank">春末的南方城市</a>」,也是我这个夏天的写照。</p>
+<p>2013年的夏天，大二下学期，那是我刚转去软件工程专业的时候，在没有任何编程基础的情况下，我记得上的第一门课程就是「程序建模」，当时除了懵了之外，还带有点羞耻感。当别人娴熟的在键盘上写代码，我只能两眼望望，对着书敲着看不懂的代码，这大概就像，从来没摸过电脑，突然跑去上电脑课的感受吧，连开关机也摸不着边。  </p>
+<p>从那时我很努力，至少在我看来是这样的，起码图书馆四楼的烟头，有我一份努力(′▽`〃)。<br>我想得到认可，迫不及待，别人走一步，我得跨三步才能扯平。  </p>
 
     
     
@@ -582,7 +323,7 @@ init-<span class="keyword">connect</span>=<span class="string">'SET NAMES utf8'<
 </div>
 <p>
   
-  &copy; 2014 John Doe
+  &copy; 2014 ORANGEHAT
   
 </p>
 <div class="clearfix"></div></footer>
