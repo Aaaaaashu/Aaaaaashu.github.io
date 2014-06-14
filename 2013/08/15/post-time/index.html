@@ -3,9 +3,14 @@
 <head>
   <meta charset="utf-8">
   
-  <title>饭醉记录</title>
+  <title>贴贴，实习经历 | 饭醉记录</title>
   <meta name="author" content="ORANGEHAT">
 
+  
+  <meta name="description" content="你现在所看到的，是来自名为「现代心理学」课程的结课报告。这门课程，我从没去上过，但我想，在写结课报告的这群人当中，最认真的，有我。为此，我故意跑到图书馆四楼，在最喜欢的阳台，面朝落地玻璃窗，看着长裙飘飘的女生，开始写我的结课报告「过去、现在、未来」。  
+
+过去。
+我已经过了计较年龄的时候，年龄的增">
   
   
 
@@ -26,8 +31,7 @@
     
   </ul>
 </nav></header>
-  <div id="content" class="inner">
-  <article class="post">
+  <div id="content" class="inner"><article class="post">
   
     <div class="gallery">
   <div class="photoset">
@@ -44,242 +48,7 @@
   <header>
     
   
-    <h1 class="title"><a href="/2014/03/11/mysql-issues/">Mysql配置的二三事</a></h1>
-  
-
-    <time datetime="2014-03-11T04:53:01.000Z">
-  <span class="day">11</span><span class="month">Mar</span>
-</time>
-  </header>
-  <div class="entry-content">
-    
-      <p>Mac下的Mysql安装：  </p>
-<p>解决Mysql中文乱码：  </p>
-<p>以基于Servlet+Mysql构建网站为例，网页/数据库出现中文乱码的原因：数据在流动的任意节点处，编码不一致，出现乱码。<br>数据流动的任意节点，分为两块，分别是Web和数据库：<br>-----Web：网页、Jsp页面、Java代码文件、Tomcat读取的web.xml<br>-----数据库：Mysql的client/server/connection以及数据库/表/字段  </p>
-<p>要使乱码不出现，须使任意的数据节点编码一致，在此之前先了解以下知识：<br>关于字符集：Laruence写的<a href="(http://www.laruence.com/2008/01/05/12.html)">深入Mysql字符集设置</a>，以及<a href="(http://hi.baidu.com/sppeivan/item/358e6fc07e9620320831c621)">Mysql字符集设置详解</a>。<br>关于编码：<a href="(http://www.dedeadmin.com/?p=132)">GBK和UTF-8有什么区别？</a>，以及<a href="(http://undefinedblog.com/2013/04/everything-a-developer-should-know-about-font-n-encoding/)">前端工程师与字符编码及更多</a>。</p>
-
-    
-    
-    <footer class="meta">
-      
-      
-      
-    </footer>
-    
-  </div>
-  
-</article>
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
-    
-  
-    <h1 class="title"><a href="/2014/03/03/digital-image-processing/">数字图像处理-PPM图像格式</a></h1>
-  
-
-    <time datetime="2014-03-02T17:08:08.000Z">
-  <span class="day">3</span><span class="month">Mar</span>
-</time>
-  </header>
-  <div class="entry-content">
-    
-      <p>PPM图像格式是由Jef Poskanzer 大叔，在我出生那一年，也就是1991年所创造的，碰巧的是PPM也是天蝎座。  </p>
-<p>PPM（Portable Pixmap Format）还有两位兄长，大哥名叫「PBM」，二哥人称「PGM」，他们三兄弟各有所长，下面为你们一一介绍：<br>PBM 是位图（bitmap），仅有黑与白，没有灰<br>PGM 是灰度图（grayscale）<br>PPM 是通过RGB三种颜色显现的图像（pixmaps）</p>
-
-    
-    
-    <footer class="meta">
-      
-      
-      
-    </footer>
-    
-  </div>
-  
-</article>
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
-    
-  
-    <h1 class="title"><a href="/2014/02/24/hexo-tutorial/">Hexo Tutorial</a></h1>
-  
-
-    <time datetime="2014-02-24T15:05:19.000Z">
-  <span class="day">24</span><span class="month">Feb</span>
-</time>
-  </header>
-  <div class="entry-content">
-    
-      <p><strong>创建博客：</strong>  </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>hexo <span class="keyword">new</span> <span class="string">"title"</span>
-</pre></td></tr></table></figure>
-
-<p><strong>部署博客：</strong>  </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="comment">hexo</span> <span class="comment">deploy</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">generate</span>
-</pre></td></tr></table></figure>
-
-<p><strong>快速部署发布：</strong>  </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>hexo g -<span class="operator">-d</span>
-</pre></td></tr></table></figure>
-
-<p><strong>文件头的冒号「：」后面必须要有空格：</strong>  </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-</pre></td><td class="code"><pre><span class="label">title:</span> postName <span class="preprocessor">#文章页面上的显示名称，可以任意修改，不会出现在URL中</span>
-<span class="label">date:</span> <span class="number">2013</span>-<span class="number">12</span>-<span class="number">02</span> <span class="number">15</span>:<span class="number">30</span>:<span class="number">16</span> <span class="preprocessor">#文章生成时间，一般不改，当然也可以任意修改</span>
-<span class="label">categories:</span> <span class="preprocessor">#文章分类目录，可以为空，注意:后面有个空格</span>
-<span class="label">tags:</span> <span class="preprocessor">#文章标签，可空，多标签请用格式[tag1,tag2,tag3]，注意:后面有个空格</span>
----
-这里开始使用markdown格式输入你的正文。
-</pre></td></tr></table></figure>
-
-
-    
-    
-    <footer class="meta">
-      
-      
-      
-    </footer>
-    
-  </div>
-  
-</article>
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
-    
-  
-    <h1 class="title"><a href="/2014/02/10/mac-operating/">写给媳妇看的Mac操作手册</a></h1>
-  
-
-    <time datetime="2014-02-10T15:02:19.000Z">
-  <span class="day">10</span><span class="month">Feb</span>
-</time>
-  </header>
-  <div class="entry-content">
-    
-      <p>挖坑，将来再填。</p>
-
-    
-    
-    <footer class="meta">
-      
-      
-      
-    </footer>
-    
-  </div>
-  
-</article>
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
-    
-  
-    <h1 class="title"><a href="/2013/12/31/2013-summary/">2013 Summary</a></h1>
-  
-
-    <time datetime="2013-12-31T14:57:39.000Z">
-  <span class="day">31</span><span class="month">Dec</span>
-</time>
-  </header>
-  <div class="entry-content">
-    
-      <p>一年前的现在，大概是王家卫的「一代宗师」刚上映不久，<br>我去看了，像大多数王家卫的电影一样，台词集结出来，可以成为一本语录。<br>里头有这样一句台词「念念不忘，必有回响」。<br>「念念不忘，必有回响」，这是我在豆瓣记下的第一篇私人日记的标题。  </p>
-<p>在此之前，读过机械电子工程，念过飞行器制造专业，也当了学校社团的小头目，<br>像大多数人的20岁一样，我也不知道将来想做什么，想成为什么。<br>那时的常态，窝在床上，盯着3.7寸的屏幕，看武侠小说。<br>武侠小说中常有的万金油剧情，少年，奇遇，绝世秘籍，成为盖世大英雄。<br>而我的2013年剧情大概是这样的，中二少年，上网，互联网真屌，想成为一名程序员。  </p>
-<p>想成为一名程序员，有很多理由，也可以没有缘由，就像是冲动，<br>少年的冲动，不需要动机，也不需要任何理由，一点点躁动就足以点燃。  </p>
-
-    
-    
-    <footer class="meta">
-      
-      
-      
-    </footer>
-    
-  </div>
-  
-</article>
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
-    
-  
-    <h1 class="title"><a href="/2013/08/15/post-time/">贴贴，实习经历</a></h1>
+    <h1 class="title">贴贴，实习经历</h1>
   
 
     <time datetime="2013-08-15T13:02:02.000Z">
@@ -325,56 +94,13 @@
     
   </div>
   
-</article>
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
+<section id="comment">
+  <div id="disqus_thread" aria-live="polite">
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
-    
-  
-    <h1 class="title"><a href="/2013/08/15/tietie-work/">贴贴，实习经历</a></h1>
-  
+</section>
 
-    <time datetime="2013-08-15T13:02:02.000Z">
-  <span class="day">15</span><span class="month">Aug</span>
-</time>
-  </header>
-  <div class="entry-content">
-    
-      <p>这个下雨的清晨 ，我从南方的这个城市准备去南方的那个城市。<br>这首歌是李志的「<a href="http://music.163.com/#/song?id=26508238" target="_blank">春末的南方城市</a>」,也是我这个夏天的写照。</p>
-<p>2013年的夏天，大二下学期，那是我刚转去软件工程专业的时候，在没有任何编程基础的情况下，我记得上的第一门课程就是「程序建模」，当时除了懵了之外，还带有点羞耻感。当别人娴熟的在键盘上写代码，我只能两眼望望，对着书敲着看不懂的代码，这大概就像，从来没摸过电脑，突然跑去上电脑课的感受吧，连开关机也摸不着边。  </p>
-<p>从那时我很努力，至少在我看来是这样的，起码图书馆四楼的烟头，有我一份努力(′▽`〃)。<br>我想得到认可，迫不及待，别人走一步，我得跨三步才能扯平。  </p>
-
-    
-    
-    <footer class="meta">
-      
-      
-      
-    </footer>
-    
-  </div>
-  
-</article>
-
-
-<nav id="pagenavi">
-  
-  
-  <div class="clearfix"></div>
-</nav></div>
+</article></div>
   <footer id="footer" class="inner"><div class="social alignright">
   
   
@@ -403,7 +129,7 @@ var disqus_shortname = 'true';
   var dsq = document.createElement('script');
   dsq.type = 'text/javascript';
   dsq.async = true;
-  dsq.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 }());
 </script>
