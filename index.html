@@ -1,10 +1,1573 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0">
+
+<title>CSS Guidelines (2.0.15) – High-level advice and guidelines for writing sane, manageable, scalable CSS</title>
+
+<meta name="description" content="High-level advice and guidelines for writing sane, manageable, scalable CSS">
+
+<link rel="canonical" href="http://cssguidelin.es/">
+
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Titillium+Web:200%7CMerriweather:300italic,300,700,700italic">
+<link rel="stylesheet" href="css/main.min.css">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@cssguidelines">
+<meta name="twitter:domain" content="cssguidelin.es">
+<meta name="twitter:creator" content="@csswizardry">
+<meta name="twitter:title" content="CSS Guidelines">
+<meta name="twitter:image:src" content="http://cssguidelin.es/twitter-card.png">
+<meta name="twitter:description" content="High-level advice and guidelines for writing sane, manageable, scalable CSS">
+
+<link rel="shortcut icon" href="/icon.png">
+<link rel="apple-touch-icon-precomposed" href="/icon.png">
+
 </head>
 <body>
-  <p>Hello world!</p>
-</body>
-</html>
+
+<header class="page-head">
+    <div class="wrapper">
+        <div class="logo-wrap">
+            <svg class="logo" preserveAspectRatio="xMinYMin meet" viewBox="0 0 180 60" xmlns="http://www.w3.org/2000/svg"><g><path d="M175.182 46.117c-.754-.453-1.322-1.046-1.704-1.777-.382-.731-.573-1.571-.573-2.519v-2.581c0-1.381-.258-2.367-.775-2.959-.516-.592-1.353-.889-2.51-.889-.351 0-.602-.077-.751-.232-.15-.155-.225-.428-.225-.819 0-.391.075-.664.225-.819.15-.155.4-.232.751-.232 1.808 0 3.195.471 4.16 1.414.966.943 1.449 2.393 1.449 4.35v2.612c0 1.123.269 1.973.806 2.55.537.577 1.379.865 2.526.865.351 0 .602.077.751.232.15.155.225.428.225.819 0 .391-.075.664-.225.819-.15.155-.4.232-.751.232-1.147 0-1.988.286-2.526.858-.537.572-.806 1.419-.806 2.542v3.292c0 1.968-.483 3.42-1.449 4.358-.966.938-2.353 1.406-4.16 1.406-.351 0-.602-.077-.751-.232-.15-.155-.225-.428-.225-.819 0-.391.075-.664.225-.819.15-.155.4-.232.751-.232 1.157 0 1.994-.296 2.51-.889.516-.592.775-1.579.775-2.959v-3.261c0-.948.191-1.79.573-2.527.382-.737.95-1.332 1.704-1.785zm-18.165-4.559c0-.361.07-.698.209-1.012.139-.314.328-.59.566-.827.238-.237.514-.425.829-.564.315-.139.653-.209 1.015-.209.362 0 .7.07 1.015.209.315.139.591.327.829.564.238.237.426.513.566.827.139.314.209.652.209 1.012 0 .361-.07.698-.209 1.012-.139.314-.328.59-.566.827-.238.237-.514.425-.829.564-.315.139-.653.209-1.015.209-.362 0-.7-.07-1.015-.209-.315-.139-.591-.327-.829-.564-.238-.237-.426-.513-.566-.827-.139-.314-.209-.652-.209-1.012zm.852 15.917c-.114.216-.261.376-.442.479-.181.103-.374.155-.581.155-.145 0-.279-.023-.403-.07-.124-.046-.232-.113-.325-.201-.093-.088-.158-.193-.194-.317-.036-.124-.039-.268-.008-.433l1.611-7.448c.093-.412.362-.618.806-.618h3.006c.258 0 .431.095.519.286.088.191.059.42-.085.688l-3.905 7.479zm-.832-38.648c0-.361.07-.698.209-1.012.139-.314.328-.59.566-.827.238-.237.514-.425.829-.564.315-.139.653-.209 1.015-.209.362 0 .7.07 1.015.209.315.139.591.327.829.564.238.237.426.513.566.827.139.314.209.652.209 1.012 0 .361-.07.698-.209 1.012-.139.314-.328.59-.566.827-.238.237-.514.425-.829.564-.315.139-.653.209-1.015.209-.362 0-.7-.07-1.015-.209-.315-.139-.591-.327-.829-.564-.238-.237-.426-.513-.566-.827-.139-.314-.209-.652-.209-1.012zm0-9.736c0-.361.07-.698.209-1.012.139-.314.328-.59.566-.827.238-.237.514-.425.829-.564.315-.139.653-.209 1.015-.209.362 0 .7.07 1.015.209.315.139.591.327.829.564.238.237.426.513.566.827.139.314.209.652.209 1.012 0 .361-.07.698-.209 1.012-.139.314-.328.59-.566.827-.238.237-.514.425-.829.564-.315.139-.653.209-1.015.209-.362 0-.7-.07-1.015-.209-.315-.139-.591-.327-.829-.564-.238-.237-.426-.513-.566-.827-.139-.314-.209-.652-.209-1.012zm-97.658 4.559c.754.453 1.322 1.048 1.704 1.785.382.737.573 1.579.573 2.527v3.261c0 .69.062 1.28.186 1.769.124.489.318.889.581 1.198.263.309.604.533 1.023.672.418.139.917.209 1.495.209.351 0 .602.077.751.232.15.155.225.428.225.819 0 .391-.075.664-.225.819-.15.155-.4.232-.751.232-1.808 0-3.195-.469-4.16-1.406-.966-.938-1.449-2.39-1.449-4.358v-3.292c0-1.123-.269-1.97-.806-2.542-.537-.572-1.379-.858-2.526-.858-.351 0-.602-.077-.751-.232-.15-.155-.225-.428-.225-.819 0-.391.075-.664.225-.819.15-.155.4-.232.751-.232 1.147 0 1.988-.288 2.526-.865.537-.577.806-1.427.806-2.55v-2.612c0-1.957.483-3.407 1.449-4.35.966-.943 2.353-1.414 4.16-1.414.351 0 .602.077.751.232.15.155.225.428.225.819 0 .391-.075.664-.225.819-.15.155-.4.232-.751.232-.578 0-1.077.07-1.495.209-.418.139-.759.363-1.023.672-.263.309-.457.708-.581 1.198-.124.489-.186 1.079-.186 1.769v2.581c0 .948-.191 1.787-.573 2.519-.382.731-.95 1.324-1.704 1.777z" class="logo__punctuation"></path><path d="M143.625 52.901c0 .361-.085.618-.256.773-.17.155-.473.232-.906.232-.434 0-.736-.077-.906-.232-.17-.155-.256-.412-.256-.773v-3.709c0-.361.085-.618.256-.773.17-.155.473-.232.906-.232.227 0 .403.052.527.155.124.103.227.263.31.479.382.999 1.007 1.723 1.875 2.171.868.448 2.019.672 3.455.672 1.24 0 2.169-.219 2.789-.657.62-.438.93-1.012.93-1.723 0-.371-.119-.667-.356-.889-.238-.221-.558-.399-.961-.533-.455-.155-.981-.268-1.58-.34-.599-.072-1.229-.144-1.89-.216-.661-.072-1.32-.165-1.976-.278-.656-.113-1.263-.278-1.821-.495-.351-.134-.671-.299-.961-.495-.289-.196-.54-.428-.751-.695-.212-.268-.377-.577-.496-.927-.119-.35-.178-.752-.178-1.205 0-.69.139-1.301.418-1.831.279-.531.664-.976 1.154-1.337.491-.361 1.069-.634 1.735-.819.666-.185 1.392-.278 2.177-.278 1.033 0 1.96.152 2.781.456.821.304 1.526.719 2.115 1.244v-.695c0-.361.085-.618.256-.773.17-.155.473-.232.906-.232.434 0 .736.077.906.232.17.155.256.412.256.773v2.936c0 .361-.085.618-.256.773-.17.155-.473.232-.906.232-.351 0-.599-.134-.744-.402-.238-.443-.524-.814-.86-1.113-.336-.299-.723-.536-1.162-.711-.439-.175-.922-.299-1.449-.371-.527-.072-1.09-.108-1.689-.108-1.002 0-1.784.175-2.347.525-.563.35-.844.85-.844 1.499 0 .34.111.613.333.819.222.206.529.371.922.495.434.144.94.25 1.518.317.578.067 1.188.134 1.828.201.64.067 1.286.149 1.937.247s1.255.25 1.813.456c.382.144.733.317 1.054.518.32.201.597.443.829.726.232.283.413.613.542.989.129.376.194.811.194 1.306 0 .69-.132 1.319-.395 1.885-.263.567-.651 1.053-1.162 1.46-.511.407-1.141.721-1.89.943-.749.221-1.604.332-2.564.332-1.126 0-2.11-.155-2.952-.464-.842-.309-1.578-.778-2.208-1.406v.865zm-16.44-5.903c.083 1.556.514 2.722 1.294 3.5s1.893 1.167 3.339 1.167c1.043 0 2.056-.118 3.037-.355.981-.237 1.828-.561 2.541-.974.331-.185.607-.201.829-.046.222.155.4.397.535.726.145.33.176.626.093.889-.083.263-.294.482-.635.657-.403.196-.85.376-1.34.541-.491.165-1.012.306-1.565.425-.553.118-1.123.211-1.712.278-.589.067-1.183.1-1.782.1-1.136 0-2.143-.173-3.021-.518-.878-.345-1.617-.84-2.216-1.484-.599-.644-1.056-1.427-1.371-2.349-.315-.922-.473-1.965-.473-3.129 0-1.123.183-2.145.55-3.067.367-.922.875-1.71 1.526-2.364.651-.654 1.428-1.159 2.332-1.514.904-.355 1.898-.533 2.983-.533 1.147 0 2.159.178 3.037.533.878.355 1.619.847 2.224 1.476.604.628 1.072 1.375 1.402 2.241.331.865.527 1.813.589 2.843 0 .35-.075.598-.225.742-.15.144-.4.216-.751.216h-11.218zm4.943-5.81c-1.291 0-2.347.322-3.169.966-.821.644-1.361 1.538-1.619 2.681h9.467c-.217-1.164-.708-2.063-1.472-2.697-.764-.634-1.834-.95-3.207-.95zm-22.617.201h-1.58c-.351 0-.602-.077-.751-.232-.15-.155-.225-.428-.225-.819 0-.391.075-.664.225-.819.15-.155.4-.232.751-.232h2.774c.351 0 .602.077.751.232.15.155.225.428.225.819v1.854c.682-1.061 1.477-1.867 2.386-2.418.909-.551 1.896-.827 2.96-.827.713 0 1.353.118 1.921.355.568.237 1.051.572 1.449 1.004.398.433.702.961.914 1.584.212.623.318 1.321.318 2.094v7.479h1.271c.351 0 .602.077.751.232.15.155.225.428.225.819 0 .391-.075.664-.225.819-.15.155-.4.232-.751.232h-5.02c-.351 0-.602-.077-.751-.232-.15-.155-.225-.428-.225-.819 0-.391.075-.664.225-.819.15-.155.4-.232.751-.232h1.426v-7.248c0-.443-.052-.847-.155-1.213-.103-.366-.258-.68-.465-.943-.207-.263-.467-.466-.782-.61-.315-.144-.684-.216-1.108-.216-.661 0-1.291.144-1.89.433-.599.288-1.126.69-1.58 1.205-.455.515-.816 1.128-1.085 1.839-.269.711-.403 1.489-.403 2.333v4.42h1.426c.351 0 .602.077.751.232.15.155.225.428.225.819 0 .391-.075.664-.225.819-.15.155-.4.232-.751.232h-5.02c-.351 0-.602-.077-.751-.232-.15-.155-.225-.428-.225-.819 0-.391.075-.664.225-.819.15-.155.4-.232.751-.232h1.271v-10.076zm-12.732 0h-3.92c-.351 0-.602-.077-.751-.232-.15-.155-.225-.428-.225-.819 0-.391.075-.664.225-.819.15-.155.4-.232.751-.232h5.268c.351 0 .602.077.751.232.15.155.225.428.225.819v11.126h4.974c.351 0 .602.077.751.232.15.155.225.428.225.819 0 .391-.075.664-.225.819-.15.155-.4.232-.751.232h-12.148c-.351 0-.602-.077-.751-.232-.15-.155-.225-.428-.225-.819 0-.391.075-.664.225-.819.15-.155.4-.232.751-.232h4.85v-10.076zm2.324-5.872c0 .361-.098.618-.294.773-.196.155-.589.232-1.178.232s-.981-.077-1.178-.232c-.196-.155-.294-.412-.294-.773v-2.009c0-.361.098-.618.294-.773.196-.155.589-.232 1.178-.232s.981.077 1.178.232c.196.155.294.412.294.773v2.009zm-18.532-.124h-4.23c-.351 0-.602-.077-.751-.232-.15-.155-.225-.428-.225-.819 0-.391.075-.664.225-.819.15-.155.4-.232.751-.232h5.578c.351 0 .602.077.751.232.15.155.225.428.225.819v17.122h4.974c.351 0 .602.077.751.232.15.155.225.428.225.819 0 .391-.075.664-.225.819-.15.155-.4.232-.751.232h-12.148c-.351 0-.602-.077-.751-.232-.15-.155-.225-.428-.225-.819 0-.391.075-.664.225-.819.15-.155.4-.232.751-.232h4.85v-16.071zm62.026-20.862c.083 1.556.514 2.722 1.294 3.5s1.893 1.167 3.339 1.167c1.043 0 2.056-.118 3.037-.355.981-.237 1.828-.561 2.541-.974.331-.185.607-.201.829-.046.222.155.4.397.535.726.145.33.176.626.093.889-.083.263-.294.482-.635.657-.403.196-.85.376-1.34.541-.491.165-1.012.306-1.565.425-.553.118-1.123.211-1.712.278-.589.067-1.183.1-1.782.1-1.136 0-2.143-.173-3.021-.518-.878-.345-1.617-.84-2.216-1.484-.599-.644-1.056-1.427-1.371-2.349-.315-.922-.473-1.965-.473-3.129 0-1.123.183-2.145.55-3.067.367-.922.875-1.71 1.526-2.364.651-.654 1.428-1.159 2.332-1.514.904-.355 1.898-.533 2.983-.533 1.147 0 2.159.178 3.037.533.878.355 1.619.847 2.224 1.476.604.628 1.072 1.375 1.402 2.241.331.865.527 1.813.589 2.843 0 .35-.075.598-.225.742-.15.144-.4.216-.751.216h-11.218zm4.943-5.81c-1.291 0-2.347.322-3.169.966-.821.644-1.361 1.538-1.619 2.681h9.467c-.217-1.164-.708-2.063-1.472-2.697-.764-.634-1.834-.95-3.207-.95zm-9.199 10.276c.351 0 .602.077.751.232.15.155.225.428.225.819 0 .391-.075.664-.225.819-.15.155-.4.232-.751.232h-2.464c-.351 0-.602-.077-.751-.232-.15-.155-.225-.428-.225-.819v-1.236c-.64.834-1.387 1.481-2.239 1.939-.852.458-1.795.688-2.828.688-.961 0-1.849-.162-2.665-.487-.816-.325-1.521-.791-2.115-1.399-.594-.608-1.061-1.35-1.402-2.225-.341-.876-.511-1.87-.511-2.982 0-1.113.17-2.107.511-2.982.341-.876.808-1.617 1.402-2.225.594-.608 1.299-1.074 2.115-1.399.816-.325 1.704-.487 2.665-.487 1.033 0 1.955.209 2.766.626.811.417 1.526 1.012 2.146 1.785v-6.738h-3.13c-.351 0-.602-.077-.751-.232-.15-.155-.225-.428-.225-.819 0-.391.075-.664.225-.819.15-.155.4-.232.751-.232h4.478c.351 0 .602.077.751.232.15.155.225.428.225.819v17.122h1.271zm-3.595-4.651c0-.762-.119-1.442-.356-2.04-.238-.598-.568-1.1-.992-1.507-.424-.407-.927-.719-1.511-.935-.584-.216-1.216-.325-1.898-.325-.702 0-1.327.118-1.875.355-.547.237-1.007.569-1.379.997-.372.428-.656.935-.852 1.522-.196.587-.294 1.231-.294 1.932 0 .701.098 1.344.294 1.932.196.587.48 1.095.852 1.522.372.428.832.76 1.379.997s1.172.355 1.875.355c.682 0 1.314-.108 1.898-.325.584-.216 1.087-.528 1.511-.935.424-.407.754-.909.992-1.507.238-.598.356-1.277.356-2.04zm-20.241-5.424h-3.92c-.351 0-.602-.077-.751-.232-.15-.155-.225-.428-.225-.819 0-.391.075-.664.225-.819.15-.155.4-.232.751-.232h5.268c.351 0 .602.077.751.232.15.155.225.428.225.819v11.126h4.974c.351 0 .602.077.751.232.15.155.225.428.225.819 0 .391-.075.664-.225.819-.15.155-.4.232-.751.232h-12.148c-.351 0-.602-.077-.751-.232-.15-.155-.225-.428-.225-.819 0-.391.075-.664.225-.819.15-.155.4-.232.751-.232h4.85v-10.076zm2.324-5.872c0 .361-.098.618-.294.773-.196.155-.589.232-1.178.232s-.981-.077-1.178-.232c-.196-.155-.294-.412-.294-.773v-2.009c0-.361.098-.618.294-.773.196-.155.589-.232 1.178-.232s.981.077 1.178.232c.196.155.294.412.294.773v2.009zm-11.012 15.948c.351 0 .602.077.751.232.15.155.225.428.225.819 0 .391-.075.664-.225.819-.15.155-.4.232-.751.232h-2.464c-.351 0-.602-.075-.751-.224-.15-.149-.225-.42-.225-.811v-1.87c-.682 1.061-1.477 1.867-2.386 2.418-.909.551-1.896.827-2.96.827-.713 0-1.353-.118-1.921-.355-.568-.237-1.051-.572-1.449-1.004-.398-.433-.702-.961-.914-1.584-.212-.623-.318-1.321-.318-2.094v-7.479h-1.271c-.351 0-.602-.077-.751-.232-.15-.155-.225-.428-.225-.819 0-.391.075-.664.225-.819.15-.155.4-.232.751-.232h2.619c.351 0 .602.077.751.232.15.155.225.428.225.819v8.298c0 .443.052.847.155 1.213.103.366.258.68.465.943.207.263.467.466.782.61.315.144.684.216 1.108.216.661 0 1.291-.144 1.89-.433.599-.288 1.126-.69 1.58-1.205.455-.515.816-1.128 1.085-1.839.269-.711.403-1.489.403-2.333v-4.42h-2.2c-.351 0-.602-.077-.751-.232-.15-.155-.225-.428-.225-.819 0-.391.075-.664.225-.819.15-.155.4-.232.751-.232h3.548c.351 0 .602.077.751.232.15.155.225.428.225.819v11.126h1.271zm-30.835 5.362c.713.299 1.462.518 2.247.657.785.139 1.555.209 2.309.209.692 0 1.294-.09 1.805-.27.511-.18.935-.438 1.271-.773.336-.335.586-.734.751-1.198.165-.464.248-.979.248-1.545v-3.183c-.62.773-1.335 1.368-2.146 1.785-.811.417-1.733.626-2.766.626-.961 0-1.849-.162-2.665-.487-.816-.325-1.521-.791-2.115-1.399-.594-.608-1.061-1.35-1.402-2.225-.341-.876-.511-1.87-.511-2.982 0-1.113.17-2.107.511-2.982.341-.876.808-1.617 1.402-2.225.594-.608 1.299-1.074 2.115-1.399.816-.325 1.704-.487 2.665-.487 1.033 0 1.976.229 2.828.688.852.458 1.599 1.105 2.239 1.939v-1.236c0-.391.075-.664.225-.819.15-.155.4-.232.751-.232h2.464c.351 0 .602.077.751.232.15.155.225.428.225.819 0 .391-.075.664-.225.819-.15.155-.4.232-.751.232h-1.271v12.718c0 .927-.142 1.754-.426 2.48-.284.726-.7 1.339-1.247 1.839-.547.5-1.219.883-2.014 1.151-.795.268-1.699.402-2.712.402-.899 0-1.803-.077-2.712-.232-.909-.155-1.772-.386-2.588-.695-.279-.113-.462-.283-.55-.51-.088-.227-.065-.536.07-.927.134-.391.307-.649.519-.773.212-.124.447-.129.705-.015zm8.631-10.786c0-.762-.119-1.442-.356-2.04-.238-.598-.568-1.1-.992-1.507-.424-.407-.927-.719-1.511-.935-.584-.216-1.216-.325-1.898-.325-.702 0-1.327.118-1.875.355-.547.237-1.007.569-1.379.997-.372.428-.656.935-.852 1.522-.196.587-.294 1.231-.294 1.932 0 .701.098 1.344.294 1.932.196.587.48 1.095.852 1.522.372.428.832.76 1.379.997s1.172.355 1.875.355c.682 0 1.314-.108 1.898-.325.584-.216 1.087-.528 1.511-.935.424-.407.754-.909.992-1.507.238-.598.356-1.277.356-2.04zm-48.225 6.861c0 .361-.085.618-.256.773-.17.155-.473.232-.906.232-.434 0-.736-.077-.906-.232-.17-.155-.256-.412-.256-.773v-3.709c0-.361.085-.618.256-.773.17-.155.473-.232.906-.232.227 0 .403.052.527.155.124.103.227.263.31.479.382.999 1.007 1.723 1.875 2.171.868.448 2.019.672 3.455.672 1.24 0 2.169-.219 2.789-.657.62-.438.93-1.012.93-1.723 0-.371-.119-.667-.356-.889-.238-.221-.558-.399-.961-.533-.455-.155-.981-.268-1.58-.34-.599-.072-1.229-.144-1.89-.216-.661-.072-1.32-.165-1.976-.278-.656-.113-1.263-.278-1.821-.495-.351-.134-.671-.299-.961-.495-.289-.196-.54-.428-.751-.695-.212-.268-.377-.577-.496-.927-.119-.35-.178-.752-.178-1.205 0-.69.139-1.301.418-1.831.279-.531.664-.976 1.154-1.337.491-.361 1.069-.634 1.735-.819.666-.185 1.392-.278 2.177-.278 1.033 0 1.96.152 2.781.456.821.304 1.526.719 2.115 1.244v-.695c0-.361.085-.618.256-.773.17-.155.473-.232.906-.232.434 0 .736.077.906.232.17.155.256.412.256.773v2.936c0 .361-.085.618-.256.773-.17.155-.473.232-.906.232-.351 0-.599-.134-.744-.402-.238-.443-.524-.814-.86-1.113-.336-.299-.723-.536-1.162-.711-.439-.175-.922-.299-1.449-.371-.527-.072-1.09-.108-1.689-.108-1.002 0-1.784.175-2.347.525-.563.35-.844.85-.844 1.499 0 .34.111.613.333.819.222.206.529.371.922.495.434.144.94.25 1.518.317.578.067 1.188.134 1.828.201.64.067 1.286.149 1.937.247s1.255.25 1.813.456c.382.144.733.317 1.054.518.32.201.597.443.829.726.232.283.413.613.542.989.129.376.194.811.194 1.306 0 .69-.132 1.319-.395 1.885-.263.567-.651 1.053-1.162 1.46-.511.407-1.141.721-1.89.943-.749.221-1.604.332-2.564.332-1.126 0-2.11-.155-2.952-.464-.842-.309-1.578-.778-2.208-1.406v.865zm-15.722 0c0 .361-.085.618-.256.773-.17.155-.473.232-.906.232-.434 0-.736-.077-.906-.232-.17-.155-.256-.412-.256-.773v-3.709c0-.361.085-.618.256-.773.17-.155.473-.232.906-.232.227 0 .403.052.527.155.124.103.227.263.31.479.382.999 1.007 1.723 1.875 2.171.868.448 2.019.672 3.455.672 1.24 0 2.169-.219 2.789-.657.62-.438.93-1.012.93-1.723 0-.371-.119-.667-.356-.889-.238-.221-.558-.399-.961-.533-.455-.155-.981-.268-1.58-.34-.599-.072-1.229-.144-1.89-.216-.661-.072-1.32-.165-1.976-.278-.656-.113-1.263-.278-1.821-.495-.351-.134-.671-.299-.961-.495-.289-.196-.54-.428-.751-.695-.212-.268-.377-.577-.496-.927-.119-.35-.178-.752-.178-1.205 0-.69.139-1.301.418-1.831.279-.531.664-.976 1.154-1.337.491-.361 1.069-.634 1.735-.819.666-.185 1.392-.278 2.177-.278 1.033 0 1.96.152 2.781.456.821.304 1.526.719 2.115 1.244v-.695c0-.361.085-.618.256-.773.17-.155.473-.232.906-.232.434 0 .736.077.906.232.17.155.256.412.256.773v2.936c0 .361-.085.618-.256.773-.17.155-.473.232-.906.232-.351 0-.599-.134-.744-.402-.238-.443-.524-.814-.86-1.113-.336-.299-.723-.536-1.162-.711-.439-.175-.922-.299-1.449-.371-.527-.072-1.09-.108-1.689-.108-1.002 0-1.784.175-2.347.525-.563.35-.844.85-.844 1.499 0 .34.111.613.333.819.222.206.529.371.922.495.434.144.94.25 1.518.317.578.067 1.188.134 1.828.201.64.067 1.286.149 1.937.247s1.255.25 1.813.456c.382.144.733.317 1.054.518.32.201.597.443.829.726.232.283.413.613.542.989.129.376.194.811.194 1.306 0 .69-.132 1.319-.395 1.885-.263.567-.651 1.053-1.162 1.46-.511.407-1.141.721-1.89.943-.749.221-1.604.332-2.564.332-1.126 0-2.11-.155-2.952-.464-.842-.309-1.578-.778-2.208-1.406v.865zm-7.221-8.468c0-.464-.093-.891-.279-1.283-.186-.391-.462-.729-.829-1.012-.367-.283-.819-.505-1.356-.664-.537-.16-1.162-.24-1.875-.24-.754 0-1.449.129-2.084.386-.635.258-1.18.618-1.635 1.082-.455.464-.811 1.012-1.069 1.646-.258.634-.387 1.326-.387 2.078 0 .752.119 1.445.356 2.078.238.634.576 1.182 1.015 1.646.439.464.968.824 1.588 1.082.62.258 1.307.386 2.061.386.95 0 1.87-.144 2.758-.433.888-.288 1.704-.716 2.448-1.283.269-.206.522-.283.759-.232.238.052.465.258.682.618.176.278.25.567.225.865-.026.299-.189.556-.488.773-.837.618-1.813 1.102-2.929 1.453-1.116.35-2.267.525-3.455.525-1.136 0-2.164-.188-3.083-.564-.919-.376-1.704-.899-2.355-1.569-.651-.67-1.152-1.46-1.503-2.372-.351-.912-.527-1.903-.527-2.975 0-1.071.181-2.063.542-2.975.362-.912.87-1.702 1.526-2.372.656-.67 1.441-1.192 2.355-1.569.914-.376 1.929-.564 3.045-.564.94 0 1.792.167 2.557.502.764.335 1.41.811 1.937 1.429v-.927c0-.361.085-.618.256-.773.17-.155.473-.232.906-.232.434 0 .736.077.906.232.17.155.256.412.256.773v4.481c0 .361-.085.618-.256.773-.17.155-.473.232-.906.232-.434 0-.736-.077-.906-.232-.17-.155-.256-.412-.256-.773z" class="logo__character"></path></g></svg>
+        </div>
+    </div>
+</header>
+
+<div class="wrapper">
+
+    <h1 class="hide">CSS Guidelines</h1>
+<h2 class="alpha  site-title">High-level advice and guidelines for writing sane, manageable, scalable CSS</h2>
+
+<h2 id="about-the-author">About the Author</h2>
+
+<p><cite>CSS Guidelines</cite> is a document by me, <a href="http://csswizardry.com/work/">Harry
+Roberts</a>. I am a Consultant Front-end Architect
+from the UK, and I help companies all over the world write and manage better
+quality UIs for their products and teams. I am available for hire.</p>
+
+<p class="text-center">
+<a href="https://twitter.com/csswizardry" class="btn  btn--secondary"><span class="hide-palm">Follow me on </span>Twitter</a>
+or <a href="http://csswizardry.com/work/" class="btn">Hire<span class="hide-palm"> Me</span></a>
+</p>
+
+<hr>
+
+<h2 id="support-the-guidelines">Support the Guidelines</h2>
+
+<p><cite>CSS Guidelines</cite> is provided through a pay-what-you-like model—from
+$0 upward. If <cite>CSS Guidelines</cite> is useful to you or your team, please
+consider <a href="https://gumroad.com/l/JAgjq">supporting it</a>.</p>
+
+<p class="text-center">
+<a href="https://gumroad.com/l/JAgjq" class="btn">Support the Guidelines</a>
+</p>
+
+<p>Get updates about changes, additions, and new and upcoming sections by following
+<a href="https://twitter.com/cssguidelines">@cssguidelines</a> on Twitter.</p>
+
+<hr>
+
+<h2 id="contents">Contents</h2>
+
+<ul>
+  <li><a href="#introduction">Introduction</a>
+    <ul>
+      <li><a href="#the-importance-of-a-styleguide">The Importance of a Styleguide</a></li>
+      <li><a href="#disclaimers">Disclaimers</a></li>
+    </ul>
+  </li>
+  <li><a href="#syntax-and-formatting">Syntax and Formatting</a>
+    <ul>
+      <li><a href="#multiple-files">Multiple Files</a></li>
+      <li><a href="#table-of-contents">Table of Contents</a></li>
+      <li><a href="#characters-wide">80 Characters Wide</a></li>
+      <li><a href="#titling">Titling</a></li>
+      <li><a href="#anatomy-of-a-ruleset">Anatomy of a Ruleset</a></li>
+      <li><a href="#multi-line-css">Multi-line CSS</a></li>
+      <li><a href="#indenting">Indenting</a>
+        <ul>
+          <li><a href="#indenting-sass">Indenting Sass</a></li>
+          <li><a href="#alignment">Alignment</a></li>
+        </ul>
+      </li>
+      <li><a href="#meaningful-whitespace">Meaningful Whitespace</a></li>
+      <li><a href="#html">HTML</a></li>
+    </ul>
+  </li>
+  <li><a href="#commenting">Commenting</a>
+    <ul>
+      <li><a href="#high-level">High-level</a>
+        <ul>
+          <li><a href="#objectextension-pointers">Object–Extension Pointers</a></li>
+        </ul>
+      </li>
+      <li><a href="#low-level">Low-level</a></li>
+      <li><a href="#preprocessor-comments">Preprocessor Comments</a></li>
+      <li><a href="#removing-comments">Removing Comments</a></li>
+    </ul>
+  </li>
+  <li><a href="#naming-conventions">Naming Conventions</a>
+    <ul>
+      <li><a href="#hyphen-delimited">Hyphen Delimited</a></li>
+      <li><a href="#bem-like-naming">BEM-like Naming</a>
+        <ul>
+          <li><a href="#starting-context">Starting Context</a></li>
+          <li><a href="#more-layers">More Layers</a></li>
+          <li><a href="#modifying-elements">Modifying Elements</a></li>
+        </ul>
+      </li>
+      <li><a href="#naming-conventions-in-html">Naming Conventions in HTML</a></li>
+      <li><a href="#javascript-hooks">JavaScript Hooks</a>
+        <ul>
+          <li><a href="#data--attributes"><code>data-*</code> Attributes</a></li>
+        </ul>
+      </li>
+      <li><a href="#taking-it-further">Taking It Further</a></li>
+    </ul>
+  </li>
+  <li><a href="#css-selectors">CSS Selectors</a>
+    <ul>
+      <li><a href="#selector-intent">Selector Intent</a></li>
+      <li><a href="#reusability">Reusability</a></li>
+      <li><a href="#location-independence">Location Independence</a></li>
+      <li><a href="#portability">Portability</a>
+        <ul>
+          <li><a href="#quasi-qualified-selectors">Quasi-Qualified Selectors</a></li>
+        </ul>
+      </li>
+      <li><a href="#naming">Naming</a>
+        <ul>
+          <li><a href="#naming-ui-components">Naming UI Components</a></li>
+        </ul>
+      </li>
+      <li><a href="#selector-performance">Selector Performance</a>
+        <ul>
+          <li><a href="#the-key-selector">The Key Selector</a></li>
+        </ul>
+      </li>
+      <li><a href="#general-rules">General Rules</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="up-next">Up Next</h3>
+
+<ul>
+  <li>Specificity</li>
+  <li>Architecture</li>
+  <li>Preprocessors</li>
+  <li>Layout</li>
+  <li>Performance</li>
+  <li>Code Smells</li>
+  <li>Legacy, Hacks, and Technical Debt</li>
+</ul>
+
+<hr>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>CSS is not a pretty language While it is simple to learn and get started with,
+it soon becomes problematic at any reasonable scale. There isn’t much we can do
+to change how CSS works, but we can make changes to the way we author and
+structure it.</p>
+
+<p>In working on large, long-running projects, with dozens of developers of
+differing specialities and abilities, it is important that we all work in a
+unified way in order to—among other things—</p>
+
+<ul>
+  <li>keep stylesheets maintainable;</li>
+  <li>keep code transparent, sane, and readable;</li>
+  <li>keep stylesheets scalable.</li>
+</ul>
+
+<p>There are a variety of techniques we must employ in order to satisfy these
+goals, and <cite>CSS Guidelines</cite> is a document of recommendations and
+approaches that will help us to do so.</p>
+
+<h3 id="the-importance-of-a-styleguide">The Importance of a Styleguide</h3>
+
+<p>A coding styleguide (note, not a visual styleguide) is a valuable tool for teams
+who</p>
+
+<ul>
+  <li>build and maintain products for a reasonable length of time;</li>
+  <li>have developers of differing abilities and specialisms;</li>
+  <li>have a number of different developers working on a product at any given time;</li>
+  <li>on-board new staff regularly;</li>
+  <li>have a number of codebases that developers dip in and out of.</li>
+</ul>
+
+<p>Whilst styleguides are typically more suited to product teams—large codebases on
+long-lived and evolving projects, with multiple developers contributing over
+prolonged periods of time—all developers should strive for a degree of
+standardisation in their code.</p>
+
+<p>A good styleguide, when well followed, will</p>
+
+<ul>
+  <li>set the standard for code quality across a codebase;</li>
+  <li>promote consistency across codebases;</li>
+  <li>give developers a feeling of familiarity across codebases;</li>
+  <li>increase productivity.</li>
+</ul>
+
+<p>Styleguides should be learned, understood, and implemented at all times on a
+project which is governed by one, and any deviation must be fully justified.</p>
+
+<h3 id="disclaimers">Disclaimers</h3>
+
+<p><cite>CSS Guidelines</cite> is <em>a</em> styleguide; it is not <em>the</em> styleguide. It
+contains methodologies, techniques, and tips that I would firmly recommend to my
+clients and teams, but your own tastes and circumstances may well be different.
+Your mileage may vary.</p>
+
+<p>These guidelines are opinionated, but they have been repeatedly tried, tested,
+stressed, refined, broken, reworked, and revisited over a number of years on
+projects of all sizes.</p>
+
+<hr>
+
+<h2 id="syntax-and-formatting">Syntax and Formatting</h2>
+
+<p>One of the simplest forms of a styleguide is a set of rules regarding syntax and
+formatting. Having a standard way of writing (<em>literally</em> writing) CSS means
+that code will always look and feel familiar to all members of the team.</p>
+
+<p>Further, code that looks clean <em>feels</em> clean. It is a much nicer environment to
+work in, and prompts other team members to maintain the standard of cleanliness
+that they found. Ugly code sets a bad precedent.</p>
+
+<p>At a very high-level, we want</p>
+
+<ul>
+  <li>Four (4) space indents. No tabs;</li>
+  <li>80 character wide columns;</li>
+  <li>Multi-line CSS;</li>
+  <li>Meaningful use of whitespace.</li>
+</ul>
+
+<p><span class="highlight" id="did-you-see-this-bit">But, as with anything, the
+specifics are somewhat irrelevant—consistency is key.</span></p>
+
+<h3 id="multiple-files">Multiple Files</h3>
+
+<p>With the meteoric rise of preprocessors of late, more often is the case that
+developers are splitting CSS across multiple files.</p>
+
+<p>Even if not using a preprocessor, it is a good idea to split discrete chunks of
+code into their own files, which are concatenated during a build step.</p>
+
+<p>If, for whatever reason, you are not working across multiple files, the next
+sections might require some bending to fit your setup.</p>
+
+<h3 id="table-of-contents">Table of Contents</h3>
+
+<p>A table of contents is a fairly substantial maintenance overhead, but the
+benefits it brings far outweigh any costs. It takes a diligent developer to keep
+a table of contents up to date, but it is well worth sticking with. An
+up-to-date table of contents provides a team with a single, canonical catalogue
+of what is in a CSS project, what it does, and in what order.  </p>
+
+<p>A simple table of contents will—in order, naturally—simply provide the name of
+the section and a brief summary of what it is and does, for example:</p>
+
+<pre><code>/**
+ * CONTENTS
+ *
+ * SETTINGS
+ * Global...............Globally-available variables and config.
+ *
+ * TOOLS
+ * Mixins...............Useful mixins.
+ *
+ * GENERIC
+ * Normalize.css........A level playing field.
+ * Box-sizing...........Better default `box-sizing`.
+ *
+ * BASE
+ * Headings.............H1–H6 styles.
+ *
+ * OBJECTS
+ * Wrappers.............Wrapping and constraining elements.
+ *
+ * COMPONENTS
+ * Page-head............The main page header.
+ * Page-foot............The main page footer.
+ * Buttons..............Button elements.
+ *
+ * TRUMPS
+ * Text.................Text helpers.
+ */
+</code></pre>
+
+<p>Each item maps to a section and/or include.</p>
+
+<p>Naturally, this section would be substantially larger on the majority of
+projects, but hopefully we can see how this section—in the master
+stylesheet—provides developers with a project-wide view of what is being used
+where, and why.</p>
+
+<h3 id="characters-wide">80 Characters Wide</h3>
+
+<p>Where possible, limit CSS files’ width to 80 characters. Reasons for this
+include</p>
+
+<ul>
+  <li>the ability to have multiple files open side by side;</li>
+  <li>viewing CSS on sites like GitHub, or in terminal windows;</li>
+  <li>providing a comfortable line length for comments.</li>
+</ul>
+
+<pre><code>/**
+ * I am a long-form comment. I describe, in detail, the CSS that follows. I am
+ * such a long comment that I easily break the 80 character limit, so I am
+ * broken across several lines.
+ */</code></pre>
+
+<p>There will be unavoidable exceptions to this rule—such as URLs, or gradient
+syntax—which shouldn’t be worried about.</p>
+
+<h3 id="titling">Titling</h3>
+
+<p>Begin every new major section of a CSS project with a title:</p>
+
+<pre><code>/*------------------------------------*\
+    #SECTION-TITLE
+\*------------------------------------*/
+
+.selector {}
+</code></pre>
+
+<p>The title of the section is prefixed with a hash (<code>#</code>) symbol to allow us to
+perform more targeted searches (e.g. <code>grep</code>, etc.): instead of searching for
+just <kbd>SECTION-TITLE</kbd>—which may yield many results—a more scoped search
+of <kbd>#SECTION-TITLE</kbd> should return only the section in question.</p>
+
+<p>Leave a carriage return between this title and the next line of code (be that a
+comment, some Sass, or some CSS).</p>
+
+<p>If you are working on a project where each section is its own file, this title
+should appear at the top of each one. If you are working on a project with
+multiple sections per file, each title should be preceded by five (5) carriage
+returns. This extra whitespace coupled with a title makes new sections much
+easier to spot when scrolling through large files:</p>
+
+<pre><code>/*------------------------------------*\
+    #A-SECTION
+\*------------------------------------*/
+
+.selector {}
+
+
+
+
+
+/*------------------------------------*\
+    #ANOTHER-SECTION
+\*------------------------------------*/
+
+/**
+ * Comment
+ */
+
+.another-selector {}
+</code></pre>
+
+<div class="box  box--promo  box--outdent">
+    <p>It looks like you’re enjoying these guidelines…</p>
+    <p><a href="https://gumroad.com/l/JAgjq" class="btn  btn--full  btn--tertiary">Support Them</a></p>
+</div>
+
+<h3 id="anatomy-of-a-ruleset">Anatomy of a Ruleset</h3>
+
+<p>Before we discuss how we write out our rulesets, let’s first familiarise
+ourselves with the relevant terminology:</p>
+
+<pre><code>[selector] {
+    [property]: [value];
+    [&lt;--declaration---&gt;]
+}
+</code></pre>
+
+<p>For example:</p>
+
+<pre><code>.foo, .foo--bar,
+.baz {
+    display: block;
+    background-color: green;
+    color: red;
+}
+</code></pre>
+
+<p>Here you can see we have</p>
+
+<ul>
+  <li>related selectors on the same line; unrelated selectors on new lines;</li>
+  <li>a space before our opening brace (<code>{</code>);</li>
+  <li>properties and values on the same line;</li>
+  <li>a space after our property–value delimiting colon (<code>:</code>);</li>
+  <li>each declaration on its own new line;</li>
+  <li>the opening brace (<code>{</code>) on the same line as our last selector;</li>
+  <li>our first declaration on a new line after our opening brace (<code>{</code>);</li>
+  <li>our closing brace (<code>}</code>) on its own new line;</li>
+  <li>each declaration indented by four (4) spaces;</li>
+  <li>a trailing semi-colon (<code>;</code>) on our last declaration.</li>
+</ul>
+
+<p>This format seems to be the largely universal standard (except for variations in
+number of spaces, with a lot of developers preferring two (2)).</p>
+
+<p>As such, the following would be incorrect:</p>
+
+<pre><code>.foo, .foo--bar, .baz
+{
+	display:block;
+	background-color:green;
+	color:red }
+</code></pre>
+
+<p>Problems here include</p>
+
+<ul>
+  <li>tabs instead of spaces;</li>
+  <li>unrelated selectors on the same line;</li>
+  <li>the opening brace (<code>{</code>) on its own line;</li>
+  <li>the closing brace (<code>}</code>) does not sit on its own line;</li>
+  <li>the trailing (and, admittedly, optional) semi-colon (<code>;</code>) is missing;</li>
+  <li>no spaces after colons (<code>:</code>).</li>
+</ul>
+
+<h3 id="multi-line-css">Multi-line CSS</h3>
+
+<p>CSS should be written across multiple lines, except in very specific
+circumstances. There are a number of benefits to this:</p>
+
+<ul>
+  <li>A reduced chance of merge conflicts, because each piece of functionality
+exists on its own line.</li>
+  <li>More ‘truthful’ and reliable <code>diff</code>s, because one line only ever carries one
+change.</li>
+</ul>
+
+<p>Exceptions to this rule should be fairly apparent, such as similar rulesets that
+only carry one declaration each, for example:</p>
+
+<pre><code>.icon {
+    display: inline-block;
+    width:  16px;
+    height: 16px;
+    background-image: url(/img/sprite.svg);
+}
+
+.icon--home     { background-position:   0     0  ; }
+.icon--person   { background-position: -16px   0  ; }
+.icon--files    { background-position:   0   -16px; }
+.icon--settings { background-position: -16px -16px; }
+</code></pre>
+
+<p>These types of ruleset benefit from being single-lined because</p>
+
+<ul>
+  <li>they still conform to the one-reason-to-change-per-line rule;</li>
+  <li>they share enough similarities that they don’t need to be read as thoroughly
+as other rulesets—there is more benefit in being able to scan their selectors,
+which are of more interest to us in these cases.</li>
+</ul>
+
+<h3 id="indenting">Indenting</h3>
+
+<p>As well as intending individual declarations, indent entire related rulesets to
+signal their relation to one another, for example:</p>
+
+<pre><code>.foo {}
+
+    .foo__bar {}
+
+        .foo__baz {}
+</code></pre>
+
+<p>By doing this, a developer can see at a glance that <code>.foo__baz {}</code> lives inside
+<code>.foo__bar {}</code> lives inside <code>.foo {}</code>.</p>
+
+<p>This quasi-replication of the DOM tells developers a lot about where classes are
+expected to be used without them having to refer to a snippet of HTML.</p>
+
+<h4 id="indenting-sass">Indenting Sass</h4>
+
+<p>Sass provides nesting functionality. That is to say, by writing this:</p>
+
+<pre><code>.foo {
+    color: red;
+
+    .bar {
+        color: blue;
+    }
+
+}
+</code></pre>
+
+<p>…we will be left with this compiled CSS:</p>
+
+<pre><code>.foo { color: red; }
+.foo .bar { color: blue; }
+</code></pre>
+
+<p>When indenting Sass, we stick to the same four (4) spaces, and we also leave a
+blank line before and after the nested ruleset.</p>
+
+<p><strong>N.B.</strong> Nesting in Sass should be avoided wherever possible. See the
+Specificity section for more details.</p>
+
+<h4 id="alignment">Alignment</h4>
+
+<p>Attempt to align common and related identical strings in declarations, for
+example:</p>
+
+<pre><code>.foo {
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
+}
+
+.bar {
+    position: absolute;
+    top:    0;
+    right:  0;
+    bottom: 0;
+    left:   0;
+    margin-right: -10px;
+    margin-left:  -10px;
+    padding-right: 10px;
+    padding-left:  10px;
+}
+</code></pre>
+
+<p>This makes life a little easier for developers whose text editors support column
+editing, allowing them to change several identical and aligned lines in one go.</p>
+
+<h3 id="meaningful-whitespace">Meaningful Whitespace</h3>
+
+<p>As well as indentation, we can provide a lot of information through liberal and
+judicious use of whitespace between rulesets. We use:</p>
+
+<ul>
+  <li>One (1) empty line between closely related rulesets.</li>
+  <li>Two (2) empty lines between loosely related rulesets.</li>
+  <li>Five (5) empty lines between entirely new sections.</li>
+</ul>
+
+<p>For example:</p>
+
+<pre><code>/*------------------------------------*\
+    #FOO
+\*------------------------------------*/
+
+.foo {}
+
+    .foo__bar {}
+
+
+.foo--baz {}
+
+
+
+
+
+/*------------------------------------*\
+    #BAR
+\*------------------------------------*/
+
+.bar {}
+
+    .bar__baz {}
+
+    .bar__foo {}
+</code></pre>
+
+<p>There should never be a scenario in which two rulesets do not have an empty line
+between them. This would be incorrect:</p>
+
+<pre><code>.foo {}
+    .foo__bar {}
+.foo--baz {}
+</code></pre>
+
+<h3 id="html">HTML</h3>
+
+<p>Given HTML and CSS’ inherently interconnected nature, it would be remiss of me
+to not cover some syntax and formatting guidelines for markup.</p>
+
+<p>Always quote attributes, even if they would work without. This reduces the
+chance of accidents, and is a more familiar format to the majority of
+developers. For all this would work (and is valid):</p>
+
+<pre><code>&lt;div class=box&gt;
+</code></pre>
+
+<p>…this format is preferred:</p>
+
+<pre><code>&lt;div class="box"&gt;
+</code></pre>
+
+<p>The quotes are not required here, but err on the safe side and include them.</p>
+
+<p>When writing multiple values in a class attribute, separate them with two
+spaces, thus:</p>
+
+<pre><code>&lt;div class="foo  bar"&gt;
+</code></pre>
+
+<p>When multiple classes are related to each other, consider grouping them in
+square brackets (<code>[</code> and <code>]</code>), like so:</p>
+
+<pre><code>&lt;div class="[ box  box--highlight ]  [ bio  bio--long ]"&gt;
+</code></pre>
+
+<p>This is not a firm recommendation, and is something I am still trialling myself,
+but it does carry a number of benefits. Read more in <a href="http://csswizardry.com/2014/05/grouping-related-classes-in-your-markup/"><cite>Grouping related
+classes in your
+markup</cite></a>.</p>
+
+<p>As with our rulesets, it is possible to use meaningful whitespace in your HTML.
+You can denote thematic breaks in content with five (5) empty lines, for
+example:</p>
+
+<pre><code>&lt;header class="page-head"&gt;
+    ...
+&lt;/header&gt;
+
+
+
+
+
+&lt;main class="page-content"&gt;
+    ...
+&lt;/main&gt;
+
+
+
+
+
+&lt;footer class="page-foot"&gt;
+    ...
+&lt;/footer&gt;
+</code></pre>
+
+<div class="box  box--promo  box--outdent">
+    <p>Something you need some more help with?</p>
+    <p><a href="http://csswizardry.com/work/" class="btn  btn--full  btn--tertiary">Hire me</a></p>
+</div>
+
+<p>Separate independent but loosely related snippets of markup with a single empty
+line, for example:</p>
+
+<pre><code>&lt;ul class="primary-nav"&gt;
+
+    &lt;li class="primary-nav__item"&gt;
+        &lt;a href="/" class="primary-nav__link"&gt;Home&lt;/a&gt;
+    &lt;/li&gt;
+
+    &lt;li class="primary-nav__item  primary-nav__trigger"&gt;
+        &lt;a href="/about" class="primary-nav__link"&gt;About&lt;/a&gt;
+
+        &lt;ul class="primary-nav__sub-nav"&gt;
+            &lt;li&gt;&lt;a href="/about/products"&gt;Products&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/about/company"&gt;Company&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+    &lt;li class="primary-nav__item"&gt;
+        &lt;a href="/contact" class="primary-nav__link"&gt;Contact&lt;/a&gt;
+    &lt;/li&gt;
+
+&lt;/ul&gt;
+</code></pre>
+
+<p>This allows developers to spot separate parts of the DOM at a glance, and also
+allows certain text editors—like Vim, for example—to manipulate
+empty-line-delimited blocks of markup.</p>
+
+<h3 id="further-reading">Further Reading</h3>
+
+<ul>
+  <li><a href="http://csswizardry.com/2014/05/grouping-related-classes-in-your-markup/"><cite>Grouping related classes in your markup</cite></a></li>
+</ul>
+
+<hr>
+
+<h2 id="commenting">Commenting</h2>
+
+<p>The cognitive overhead of working with CSS is huge. With so much to be aware of,
+and so many project-specific nuances to remember, the worst situation most
+developers find themselves in is being the-person-who-didn’t-write-this-code.
+Remembering your own classes, rules, objects, and helpers is manageable <em>to an
+extent</em>, but anyone inheriting CSS barely stands a chance.</p>
+
+<p><strong>CSS needs more comments.</strong></p>
+
+<p>As CSS is something of a declarative language that doesn’t really leave much of
+a paper-trail, it is often hard to discern—from looking at the CSS alone—</p>
+
+<ul>
+  <li>whether some CSS relies on other code elsewhere;</li>
+  <li>what effect changing some code will have elsewhere;</li>
+  <li>where else some CSS might be used;</li>
+  <li>what styles something might inherit (intentionally or otherwise);</li>
+  <li>what styles something might pass on (intentionally or otherwise);</li>
+  <li>where the author intended a piece of CSS to be used.</li>
+</ul>
+
+<p>This doesn’t even take into account some of CSS’ many quirks—such as various
+sates of <code>overflow</code> triggering block formatting context, or certain transform
+properties triggering hardware acceleration—that make it even more baffling to
+developers inheriting projects.</p>
+
+<p>As a result of CSS not telling its own story very well, it is a language that
+really does benefit from being heavily commented.</p>
+
+<p>As a rule, you should comment anything that isn’t immediately obvious from the
+code alone. That is to say, there is no need to tell someone that <code>color: red;</code>
+will make something red, but if you’re using <code>overflow: hidden;</code> to clear
+floats—as opposed to clipping an element’s overflow—this is probably something
+worth documenting.</p>
+
+<h3 id="high-level">High-level</h3>
+
+<p>For large comments that document entire sections or components, we use a
+DocBlock-esque multi-line comment which adheres to our 80 column width.</p>
+
+<p>Here is a real-life example from the CSS which styles the page header on <a href="http://csswizardry.com/">CSS
+Wizardry</a>:</p>
+
+<pre><code>/**
+ * The site’s main page-head can have two different states:
+ *
+ * 1) Regular page-head with no backgrounds or extra treatments; it just
+ *    contains the logo and nav.
+ * 2) A masthead that has a fluid-height (becoming fixed after a certain point)
+ *    which has a large background image, and some supporting text.
+ *
+ * The regular page-head is incredibly simple, but the masthead version has some
+ * slightly intermingled dependency with the wrapper that lives inside it.
+ */
+</code></pre>
+
+<p>This level of detail should be the norm for all non-trivial code—descriptions of
+states, permutations, conditions, and treatments.</p>
+
+<h4 id="objectextension-pointers">Object–Extension Pointers</h4>
+
+<p>When working across multiple partials, or in an OOCSS manner, you will often
+find that rulesets that can work in conjunction with each other are not always
+in the same file or location. For example, you may have a generic button
+object—which provides purely structural styles—which is to be extended in a
+component-level partial which will add cosmetics. We document this relationship
+across files with simple <i>object–extension pointers</i>. In the object file:</p>
+
+<pre><code>/**
+ * Extend `.btn {}` in _components.buttons.scss.
+ */
+
+.btn {}
+</code></pre>
+
+<p>And in your theme file:</p>
+
+<pre><code>/**
+ * These rules extend `.btn {}` in _objects.buttons.scss.
+ */
+
+.btn--positive {}
+
+.btn--negative {}
+</code></pre>
+
+<p>This simple, low effort commenting can make a lot of difference to developers
+who are unaware of relationships across projects, or who are wanting to know
+how, why, and where other styles might be being inherited from.</p>
+
+<h3 id="low-level">Low-level</h3>
+
+<p>Oftentimes we want to comment on specific declarations (i.e. lines) in a
+ruleset. To do this we use a kind of reverse footnote. Here is a more complex
+comment detailing the larger site headers mentioned above:</p>
+
+<pre><code>/**
+ * Large site headers act more like mastheads. They have a faux-fluid-height
+ * which is controlled by the wrapping element inside it.
+ *
+ * 1. Mastheads will typically have dark backgrounds, so we need to make sure
+ *    the contrast is okay. This value is subject to change as the background
+ *    image changes.
+ * 2. We need to delegate a lot of the masthead’s layout to its wrapper element
+ *    rather than the masthead itself: it is to this wrapper that most things
+ *    are positioned.
+ * 3. The wrapper needs positioning context for us to lay our nav and masthead
+ *    text in.
+ * 4. Faux-fluid-height technique: simply create the illusion of fluid height by
+ *    creating space via a percentage padding, and then position everything over
+ *    the top of that. This percentage gives us a 16:9 ratio.
+ * 5. When the viewport is at 758px wide, our 16:9 ratio means that the masthead
+ *    is currently rendered at 480px high. Let’s…
+ * 6. …seamlessly snip off the fluid feature at this height, and…
+ * 7. …fix the height at 480px. This means that we should see no jumps in height
+ *    as the masthead moves from fluid to fixed. This actual value takes into
+ *    account the padding and the top border on the header itself.
+ */
+
+.page-head--masthead {
+    margin-bottom: 0;
+    background: url(/img/css/masthead.jpg) center center #2e2620;
+    @include vendor(background-size, cover);
+    color: $color-masthead; /* [1] */
+    border-top-color: $color-masthead;
+    border-bottom-width: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) inset;
+
+    @include media-query(lap-and-up) {
+        background-image: url(/img/css/masthead-medium.jpg);
+    }
+
+    @include media-query(desk) {
+        background-image: url(/img/css/masthead-large.jpg);
+    }
+
+    &gt; .wrapper { /* [2] */
+        position: relative; /* [3] */
+        padding-top: 56.25%; /* [4] */
+
+        @media screen and (min-width: 758px) { /* [5] */
+            padding-top: 0; /* [6] */
+            height: $header-max-height - double($spacing-unit) - $header-border-width; /* [7] */
+        }
+
+    }
+
+}
+</code></pre>
+
+<p>These types of comment allow us to keep all of our documentation in one place
+whilst referring to the parts of the ruleset to which they belong.</p>
+
+<h3 id="preprocessor-comments">Preprocessor Comments</h3>
+
+<p>With most—if not all—preprocessors, we have the option to write comments that
+will not get compiled out into our resulting CSS file. As a rule, use these
+comments to document code that would not get written out to that CSS file
+either. If you are documenting code which will get compiled, use comments that
+will compile also. For example, this is correct:</p>
+
+<pre><code>// Dimensions of the @2x image sprite:
+$sprite-width:  920px;
+$sprite-height: 212px;
+
+/**
+ * 1. Default icon size is 16px.
+ * 2. Squash down the retina sprite to display at the correct size.
+ */
+.sprite {
+    width:  16px; /* [1] */
+    height: 16px; /* [1] */
+    background-image: url(/img/sprites/main.png);
+    background-size: ($sprite-width / 2 ) ($sprite-height / 2); /* [2] */
+}
+</code></pre>
+
+<p>We have documented variables—code which will not get compiled into our CSS
+file—with preprocessor comments, whereas our CSS—code which will get compiled
+into our CSS file—is documented using CSS comments. This means that we have only
+the correct and relevant information available to us when debugging our compiled
+stylesheets.</p>
+
+<h3 id="removing-comments">Removing Comments</h3>
+
+<p>It should go without saying that no comments should make their way into
+production environments—all CSS should be minified, resulting in loss of
+comments, before being deployed.</p>
+
+<hr>
+
+<h2 id="naming-conventions">Naming Conventions</h2>
+
+<p>Naming conventions in CSS are hugely useful in making your code more
+strict, more transparent, and more informative.</p>
+
+<p>A good naming convention will tell you and your team</p>
+
+<ul>
+  <li>what type of thing a class does;</li>
+  <li>where a class can be used;</li>
+  <li>what (else) a class might be related to.</li>
+</ul>
+
+<p>The naming convention I follow is very simple: hyphen (<code>-</code>) delimited strings,
+with BEM-like naming for more complex pieces of code.</p>
+
+<p>It’s worth noting that a naming convention is not normally useful CSS-side of
+development; they really come into their own when viewed in HTML.</p>
+
+<h3 id="hyphen-delimited">Hyphen Delimited</h3>
+
+<p>All strings in classes are delimited with a hyphen (<code>-</code>), like so:</p>
+
+<pre><code>.page-head {}
+
+.sub-content {}
+</code></pre>
+
+<p>Camel case and underscores are not used for regular classes; the following are
+incorrect:</p>
+
+<pre><code>.pageHead {}
+
+.sub_content {}
+</code></pre>
+
+<div class="box  box--promo  box--outdent">
+    <p>It looks like you’re enjoying these guidelines…</p>
+    <p><a href="https://gumroad.com/l/JAgjq" class="btn  btn--full  btn--tertiary">Support Them</a></p>
+</div>
+
+<h3 id="bem-like-naming">BEM-like Naming</h3>
+
+<p>For larger, more interrelated pieces of UI that require a number of classes, we
+use a BEM-like naming convention.</p>
+
+<p><cite>BEM</cite>, meaning <i>Block</i>, <i>Element</i>, <i>Modifier</i>, is a
+front-end methodology coined by developers working at Yandex. Whilst BEM is a
+complete methodology, here we are only concerned with its naming convention.
+Further, the naming convention here only is BEM-<em>like</em>; the principles are
+exactly the same, but the actual syntax differs slightly.</p>
+
+<p>BEM splits components’ classes into three groups:</p>
+
+<ul>
+  <li>Block: The sole root of the component.</li>
+  <li>Element: A component part of the Block.</li>
+  <li>Modifier: A variant or extension of the Block.</li>
+</ul>
+
+<p>To take an analogy (note, not an example):</p>
+
+<pre><code>.person {}
+.person__head {}
+.person--tall {}
+</code></pre>
+
+<p>Elements are delimited with two (2) underscores (<code>__</code>), and Modifiers are
+delimited by two (2) hyphens (<code>--</code>).</p>
+
+<p>Here we can see that <code>.person {}</code> is the Block; it is the sole root of a
+discrete entity. <code>.person__head {}</code> is an Element; it is a smaller part of the
+<code>.person {}</code> Block. Finally, <code>.person--tall {}</code> is a Modifier; it is a specific
+variant of the <code>.person {}</code> Block.</p>
+
+<h4 id="starting-context">Starting Context</h4>
+
+<p>Your Block context starts at the most logical, self-contained, discrete
+location. To continue with our person-based analogy, we’d not have a class like
+<code>.room__person {}</code>, as the room is another, much higher context. We’d probably
+have separate Blocks, like so:</p>
+
+<pre><code>.room {}
+
+    .room__door {}
+
+.room--kitchen {}
+
+
+.person {}
+
+    .person__head {}
+</code></pre>
+
+<p>If we did want to denote a <code>.person {}</code> inside a <code>.room {}</code>, it is more correct
+to use a selector like <code>.room .person {}</code> which bridges two Blocks than it is to
+increase the scope of existing Blocks and Elements.</p>
+
+<p>A more realistic example of properly scoped blocks might look something like
+this, where each chunk of code represents its own Block:</p>
+
+<pre><code>.page {}
+
+
+.content {}
+
+
+.sub-content {}
+
+
+.footer {}
+
+    .footer__copyright {}
+</code></pre>
+
+<p>Incorrect notation for this would be:</p>
+
+<pre><code>.page {}
+
+    .page__content {}
+
+    .page__sub-content {}
+
+    .page__footer {}
+
+        .page__copyright {}
+</code></pre>
+
+<p>It is important to know when BEM scope starts and stops. As a rule, BEM applies
+to self-contained, discrete parts of the UI.</p>
+
+<h4 id="more-layers">More Layers</h4>
+
+<p>If we were to add another Element—called, let’s say, <code>.person__eye {}</code>—to this
+<code>.person {}</code> component, we would not need to step through every layer of the
+DOM. That is to say, the correct notation would be <code>.person__eye {}</code>, and not
+<code>.person__head__eye {}</code>. Your classes do not reflect the full paper-trail of the
+DOM.</p>
+
+<h4 id="modifying-elements">Modifying Elements</h4>
+
+<p>You can have variants of Elements, and these can be denoted in a number of ways
+depending on how and why they are being modified. Carrying on with our person
+example, a blue eye might look like this:</p>
+
+<pre><code>.person__eye--blue {}
+</code></pre>
+
+<p>Here we can see we’re directly modifying the eye Element.</p>
+
+<p>Things can get more complex, however. Please excuse the crude analogy, and let’s
+imagine we have a face Element that is handsome. The person themselves isn’t
+that handsome, so we modify the face Element directly—a handsome face on a
+regular person:</p>
+
+<pre><code>.person__face--handsome {}
+</code></pre>
+
+<p>But what if that person <em>is</em> handsome, and we want to style their face because
+of that fact? A regular face on a handsome person:</p>
+
+<pre><code>.person--handsome .person__face {}
+</code></pre>
+
+<p>Here is one of a few occasions where we’d use a descendant selector to modify
+an Element based on a Modifier on the Block.</p>
+
+<p>If using Sass, we would likely write this like so:</p>
+
+<pre><code>.person {}
+
+    .person__face {
+
+        .person--handsome &amp; {}
+
+    }
+
+.person--handsome {}
+</code></pre>
+
+<p>Note that we do not nest a new instance of <code>.person__face {}</code> inside of
+<code>.person--handsome {}</code>; instead, we make use of Sass’ parent selectors to
+prepend <code>.person--handsome</code> onto the existing <code>.person__face {}</code> selector. This
+means that all of our <code>.person__face {}</code>-related rules exist in once place, and
+aren’t spread throughout the file. This is general good practice when dealing
+with nested code: keep all of your context (e.g. all <code>.person__face {}</code> code)
+encapsulated in one location.</p>
+
+<h3 id="naming-conventions-in-html">Naming Conventions in HTML</h3>
+
+<p>As I previously hinted at, naming conventions aren’t necessarily all that useful
+in your CSS. Where naming conventions’ power really lies is in your markup. Take
+the following, non-naming-conventioned HTML:</p>
+
+<pre><code>&lt;div class="box  profile  pro-user"&gt;
+
+    &lt;img class="avatar  image" /&gt;
+
+    &lt;p class="bio"&gt;...&lt;/p&gt;
+
+&lt;/div&gt;
+</code></pre>
+
+<p>How are the classes <code>box</code> and <code>profile</code> related to each other? How are the
+classes <code>profile</code> and <code>avatar</code> related to each other? Are they related at all?
+Should you be using <code>pro-user</code> alongside <code>bio</code>? Will the classes <code>image</code> and
+<code>profile</code> live in the same part of the CSS? Can you use <code>avatar</code> anywhere else?</p>
+
+<p>From that markup alone, it is very hard to answer any of those questions. Using
+a naming convention, however, changes all that:</p>
+
+<pre><code>&lt;div class="box  profile  profile--is-pro-user"&gt;
+
+    &lt;img class="avatar  profile__image" /&gt;
+
+    &lt;p class="profile__bio"&gt;...&lt;/p&gt;
+
+&lt;/div&gt;
+</code></pre>
+
+<p>Now we can clearly see which classes are and are not related to each other, and
+how; we know what classes we can’t use outside of the scope of this component;
+and we know which classes we may be free to reuse elsewhere.</p>
+
+<h3 id="javascript-hooks">JavaScript Hooks</h3>
+
+<p>As a rule, it is unwise to bind your CSS and your JS onto the same class in your
+HTML. This is because doing so means you can’t have (or remove) one without
+(removing) the other. It is much cleaner, much more transparent, and much more
+maintainable to bind your JS onto specific classes.</p>
+
+<p>I have known occasions before when trying to refactor some CSS has unwittingly
+removed JS functionality because the two were tied to each other—it was
+impossible to have one without the other.</p>
+
+<p>Typically, these are classes that are prepended with <code>js-</code>, for example:</p>
+
+<pre><code>&lt;input type="submit" class="btn  js-btn" value="Follow" /&gt;
+</code></pre>
+
+<p>This means that we can have an element elsewhere which can carry with style of
+<code>.btn {}</code>, but without the behaviour of <code>.js-btn</code>.</p>
+
+<h4 id="data--attributes"><code>data-*</code> Attributes</h4>
+
+<p>A common practice is to use <code>data-*</code> attributes as JS hooks, but this is
+incorrect. <code>data-*</code> attributes, as per the spec, are used <q><strong>to store custom
+data</strong> private to the page or application</q> (emphasis mine). <code>data-*</code>
+attributes are designed to store data, not be bound to.</p>
+
+<h3 id="taking-it-further">Taking It Further</h3>
+
+<p>As previously mentioned, these are very simple naming conventions, and ones that
+don’t do much more than denote three distinct groups of class.</p>
+
+<p>I would encourage you to read up on and further look in to your naming
+convention in order to provide more functionality—I know it’s something I’m keen
+to research and investigate further.</p>
+
+<h3 id="further-reading-1">Further Reading</h3>
+
+<ul>
+  <li><a href="http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/"><cite>MindBEMding – getting your head ’round BEM syntax</cite></a></li>
+</ul>
+
+<hr>
+
+<h2 id="css-selectors">CSS Selectors</h2>
+
+<p>Perhaps somewhat surprisingly, one of the most fundamental, critical aspects of
+writing maintainable and scalable CSS is selectors. Their specificity, their
+portability, and their reusability all have a direct impact on the mileage we
+will get out of our CSS, and the headaches it might bring us.</p>
+
+<h3 id="selector-intent">Selector Intent</h3>
+
+<p>It is important when writing CSS that we scope our selectors correctly, and that
+we’re selecting the right things for the right reasons. <i>Selector Intent</i>
+is the process of deciding and defining what you want to style and how you
+will go about selecting it. For example, if you are wanting to style your
+website’s main navigation menu, a selector like this would be incredibly unwise:</p>
+
+<pre><code>header ul {}
+</code></pre>
+
+<p>This selector’s intent is to style any <code>ul</code> inside any <code>header</code> element, whereas
+<em>our</em> intent was to style the site’s main navigation. This is poor Selector
+Intent: you can have any number of <code>header</code> elements on a page, and they in turn
+can house any number of <code>ul</code>s, so a selector like this runs the risk of applying
+very specific styling to a very wide number of elements. This will result in
+having to write more CSS to undo the greedy nature of such a selector.</p>
+
+<p>A better approach would be a selector like:</p>
+
+<pre><code>.site-nav {}
+</code></pre>
+
+<p>An unambiguous, explicit selector with good Selector Intent. We are explicitly
+selecting the right thing for exactly the right reason.</p>
+
+<p>Poor Selector Intent is one of the biggest reasons for headaches on CSS
+projects. Writing rules that are far too greedy—and that apply very specific
+treatments via very far reaching selectors—causes unexpected side effects and
+leads to very tangled stylesheets, with selectors overstepping their intentions
+and impacting and interfering with otherwise unrelated rulesets.</p>
+
+<p>CSS cannot be encapsulated, it is inherently leaky, but we can mitigate some of
+these effects by not writing such globally-operating selectors: <strong>your selectors
+should be as explicit and well reasoned as your reason for wanting to select
+something.</strong></p>
+
+<h3 id="reusability">Reusability</h3>
+
+<p>With a move toward a more component-based approach to constructing UIs, the idea
+of reusability is paramount. We want the option to be able to move, recycle,
+duplicate, and syndicate components across our projects.</p>
+
+<p>To this end, we make heavy use of classes. IDs, as well as being hugely
+over-specific, cannot be used more than once on any given page, whereas classes
+can be reused an infinite amount of times. Everything you choose, from the type
+of selector to its name, should lend itself toward being reused.</p>
+
+<h3 id="location-independence">Location Independence</h3>
+
+<p>Given the ever-changing nature of most UI projects, and the move to more
+component-based architectures, it is in our interests not to style things based
+on where they are, but on <em>what</em> they are. That is to say, our components’
+styling should not be reliant upon where we place them—they should remain
+entirely location independent.</p>
+
+<p>Let’s take an example of a call-to-action button that we have chosen to style
+via the following selector:</p>
+
+<pre><code>.promo a {}
+</code></pre>
+
+<p>Not only does this have poor Selector Intent—it will greedily style any and
+every link inside of a <code>.promo</code> to look like a button—it is also pretty wasteful
+as a result of being so locationally dependent: we can’t reuse that button with
+its correct styling outside of <code>.promo</code> because it is explicitly tied to that
+location. A far better selector would have been:</p>
+
+<pre><code>.btn {}
+</code></pre>
+
+<p>This single class can be reused anywhere outside of <code>.promo</code> and will always
+carry its correct styling. As a result of a better selector, this piece of UI is
+more portable, more recyclable, doesn’t have any dependencies, and has much
+better Selector Intent. <strong>A component shouldn’t have to live in a certain place
+to look a certain way.</strong></p>
+
+<div class="box  box--promo  box--outdent">
+    <p>Something you need some more help with?</p>
+    <p><a href="http://csswizardry.com/work/" class="btn  btn--full  btn--tertiary">Hire me</a></p>
+</div>
+
+<h3 id="portability">Portability</h3>
+
+<p>Reducing, or, ideally, removing, location dependence means that we can move
+components around our markup more freely, but how about improving our ability to
+move classes around components? On a much lower level, there are changes we
+can make to our selectors that make the selectors themselves—as opposed to the
+components they create—more portable. Take the following example:</p>
+
+<pre><code>input.btn {}
+</code></pre>
+
+<p>This is a <i>qualified</i> selector; the leading <code>input</code> ties this ruleset to
+only being able to work on <code>input</code> elements. By omitting this qualification, we
+allow ourselves to reuse the <code>.btn</code> class on any element we choose, like an <code>a</code>,
+for example, or a <code>button</code>.</p>
+
+<p>Qualified selectors do not lend themselves well to being reused, and every
+selector we write should be authored with reuse in mind.</p>
+
+<p>Of course, there are times when you may want to legitimately qualify a
+selector—you might need to apply some very specific styling to a particular
+element when it carries a certain class, for example:</p>
+
+<pre><code>/**
+ * Embolden and colour any element with a class of `.error`.
+ */
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+/**
+ * If the element is a `div`, also give it some box-like styling.
+ */
+div.error {
+    padding: 10px;
+    border: 1px solid;
+}
+</code></pre>
+
+<p>This is one example where a qualified selector might be justifiable, but I would
+still recommend an approach more like:</p>
+
+<pre><code>/**
+ * Text-level errors.
+ */
+.error-text {
+    color: red;
+    font-weight: bold;
+}
+
+/**
+ * Elements that contain errors.
+ */
+.error-box {
+    padding: 10px;
+    border: 1px solid;
+}
+</code></pre>
+
+<p>This means that we can apply <code>.error-box</code> to any element, and not just a
+<code>div</code>—it is more reusable than a qualified selector.</p>
+
+<h4 id="quasi-qualified-selectors">Quasi-Qualified Selectors</h4>
+
+<p>One thing that qualified selectors can be useful for is signalling where a class
+might be expected or intended to be used, for example:</p>
+
+<pre><code>ul.nav {}
+</code></pre>
+
+<p>Here we can see that the <code>.nav</code> class is meant to be used on a <code>ul</code> element, and
+not on a <code>nav</code>. By using <i>quasi-qualified selectors</i> we can still provide
+that information without actually qualifying the selector:</p>
+
+<pre><code>/*ul*/.nav {}
+</code></pre>
+
+<p>By commenting out the leading element, we can still leave it to be read, but
+avoid qualifying and increasing the specificity of the selector.</p>
+
+<h3 id="naming">Naming</h3>
+
+<p>As Phil Karlton once said, <q>There are only two hard things in Computer
+Science: cache invalidation and naming things.</q></p>
+
+<p>I won’t comment on the former claim here, but the latter has plagued me for
+years.  My advice with regard to naming things in CSS is to pick a name that is
+sensible, but somewhat ambiguous: aim for high reusability. For example, instead
+of a class like <code>.site-nav</code>, choose something like <code>.primary-nav</code>; rather than
+<code>.footer-links</code>, favour a class like <code>.sub-links</code>.</p>
+
+<p>The differences in these names is that the first of each two examples is tied to
+a very specific use case: they can only be used as the site’s navigation or the
+footer’s links respectively. By using slightly more ambiguous names, we can
+increase our ability to reuse these components in different circumstances.</p>
+
+<p>To quote Nicolas Gallagher:</p>
+
+<blockquote>
+  <p>Tying your class name semantics tightly to the nature of the content has already
+reduced the ability of your architecture to scale or be easily put to use by
+other developers.</p>
+</blockquote>
+
+<p>That is to say, we should use sensible names—classes like <code>.border</code> or <code>.red</code>
+are never advisable—but we should avoid using classes which describe the exact
+nature of the content and/or its use cases. <strong>Using a class name to describe
+content is redundant because content describes itself.</strong></p>
+
+<p>The debate surrounding semantics has raged for years, but it is important that
+we adopt a more pragmatic, sensible approach to naming things in order to work
+more efficiently and effectively. Instead of focussing on ‘semantics’, look more
+closely at sensibility and longevity—choose names based on ease of maintenance,
+not for their perceived meaning.</p>
+
+<p>Name things for people; they’re the only things that actually <em>read</em> your
+classes (everything else merely matches them). Once again, it is better to
+strive for reusable, recyclable classes rather than writing for specific use
+cases. Let’s take an example:</p>
+
+<pre><code>/**
+ * Runs the risk of becoming out of date; not very maintainable.
+ */
+.blue {
+    color: blue;
+}
+
+/**
+ * Depends on location in order to be rendered properly.
+ */
+.header span {
+    color: blue;
+}
+
+/**
+ * Too specific; limits our ability to reuse.
+ */
+.header-color {
+    color: blue;
+}
+
+/**
+ * Nicely abstracted, very portable, doesn’t risk becoming out of date.
+ */
+.highlight-color {
+    color: blue;
+}
+</code></pre>
+
+<p>It is important to strike a balance between names that do not literally describe
+the style that the class brings, but also ones that do not explicitly describe
+specific use cases. Instead of <code>.home-page-panel</code>, choose <code>.masthead</code>; instead
+of <code>.site-nav</code>, favour <code>.primary-nav</code>; instead of <code>.btn-login</code>, opt for
+<code>.btn-primary</code>.</p>
+
+<h4 id="naming-ui-components">Naming UI Components</h4>
+
+<p>Naming components with agnosticism and reusability in mind really helps
+developers construct and modify UIs much more quickly, and with far less waste.
+However, it can sometimes be beneficial to provide more specific or meaningful
+naming alongside the more ambiguous class, particularly when several agnostic
+classes come together to form a more complex and specific component that might
+benefit from having a more meaningful name. In this scenario, we augment the
+classes with a  <code>data-ui-component</code> attribute which houses a more specific name,
+for example:</p>
+
+<pre><code>&lt;ul class="tabbed-nav" data-ui-component="Main Nav"&gt;
+</code></pre>
+
+<p>Here we have the benefits of a highly reusable class name which does not
+describe—and, therefore, tie itself to—a specific use case, and added meaning
+via our <code>data-ui-component</code> attribute. The <code>data-ui-component</code>’s value can take
+any format you wish, like title case:</p>
+
+<pre><code>&lt;ul class="tabbed-nav" data-ui-component="Main Nav"&gt;
+</code></pre>
+
+<p>Or class-like:</p>
+
+<pre><code>&lt;ul class="tabbed-nav" data-ui-component="main-nav"&gt;
+</code></pre>
+
+<p>Or namespaced:</p>
+
+<pre><code>&lt;ul class="tabbed-nav" data-ui-component="nav-main"&gt;
+</code></pre>
+
+<p>The implementation is largely personal preference, but the concept still
+remains: <strong>Add any useful or specific meaning via a mechanism that will not
+inhibit your and your team’s ability to recycle and reuse CSS.</strong></p>
+
+<h3 id="selector-performance">Selector Performance</h3>
+
+<p>A topic which is—with the quality of today’s browsers—more interesting than it
+is important, is selector performance. That is to say, how quickly a browser can
+match the selectors your write in CSS up with the nodes it finds in the DOM.</p>
+
+<p>Generally speaking, the longer a selector is (i.e. the more component parts) the
+slower it is, for example:</p>
+
+<pre><code>body.home div.header ul {}
+</code></pre>
+
+<p>…is a far less efficient selector than:</p>
+
+<pre><code>.primary-nav {}
+</code></pre>
+
+<p>This is because browsers read CSS selectors <strong>right-to-left</strong>. A browser will
+read the first selector as</p>
+
+<ul>
+  <li>find all <code>ul</code> elements in the DOM;</li>
+  <li>now check if they live anywhere inside an element with a class of <code>.header</code>;</li>
+  <li>next check that <code>.header</code> class exists on a <code>div</code> element;</li>
+  <li>now check that that all lives anywhere inside any elements with a class of
+<code>.home</code>;</li>
+  <li>finally, check that <code>.home</code> exists on a <code>body</code> element.</li>
+</ul>
+
+<p>The second, in contrast, is simply a case of the browser reading</p>
+
+<ul>
+  <li>find all the elements with a class of <code>.primary-nav</code>.</li>
+</ul>
+
+<p>To further compound the problem, we are using descendant selectors (e.g. <code>.foo
+.bar {}</code>). The upshot of this is that a browser is required to start with the
+rightmost part of the selector (i.e. <code>.bar</code>) and keep looking up the DOM
+indefinitely until it finds the next part (i.e. <code>.foo</code>). This could mean
+stepping up the DOM dozens of times until a match is found.</p>
+
+<p>This is just one reason why <strong>nesting with preprocessors is often a false
+economy</strong>; as well as making selectors unnecessarily more specific, and creating
+location dependency, it also creates more work for the browser.</p>
+
+<p>By using a child selector (e.g. <code>.foo &gt; .bar {}</code>) we can make the process much
+more efficient, because this only requires the browser to look one level higher
+in the DOM, and it will stop regardless of whether or not it found a match.</p>
+
+<h4 id="the-key-selector">The Key Selector</h4>
+
+<p>Because browsers read selectors right-to-left, the rightmost selector is often
+critical in defining a selector’s performance: this is called the <i>key
+selector</i>.</p>
+
+<p>The following selector might appear to be highly performant at first glance. It
+uses an ID which is nice and fast, and there can only ever be one on a page, so
+surely this will be a nice and speedy lookup—just find that one ID and then
+style everything inside of it:</p>
+
+<pre><code>#foo * {}
+</code></pre>
+
+<p>The problem with this selector is that the key selector (<code>*</code>) is very, <em>very</em>
+far reaching. What this selector actually does is finds <em>every single</em> node in
+the DOM (even <code>&lt;title&gt;</code>, <code>&lt;link&gt;</code>, and <code>&lt;head&gt;</code> elements; <em>everything</em>) and then
+looks to see if it lives anywhere at any level within <code>#foo</code>. This is a very,
+<em>very</em> expensive selector, and should most likely be avoided or rewritten.</p>
+
+<p>Thankfully, by writing selectors with good <a href="#selector-intent">Selector Intent</a>,
+we are probably avoiding inefficient selectors by default; we are very unlikely
+to have greedy key selectors if we’re targeting the right things for the right
+reason.</p>
+
+<p>That said, however, CSS selector performance should be fairly low on your list
+of things to optimise; browsers are fast, and are only ever getting faster, and
+it is only on notable edge cases that inefficient selectors would be likely to
+pose a problem.</p>
+
+<p>As well as their own specific issues, nesting, qualifying, and poor Selector
+Intent all contribute to less efficient selectors.</p>
+
+<h3 id="general-rules">General Rules</h3>
+
+<p>Your selectors are fundamental to writing good CSS. To very briefly sum up the
+above sections:</p>
+
+<ul>
+  <li><strong>Select what you want explicitly</strong>, rather than relying on circumstance or
+coincidence. Good Selector Intent will rein in the reach and leak of your
+styles.</li>
+  <li><strong>Write selectors for reusability</strong>, so that you can work more efficiently and
+reduce waste and repetition.</li>
+  <li><strong>Do not nest selectors unnecessarily</strong>, because this will increase
+specificity and affect where else you can use your styles.</li>
+  <li><strong>Do not qualify selectors unnecessarily</strong>, as this will impact the number of
+different elements you can apply styles to.</li>
+  <li><strong>Keep selectors as short as possible</strong>, in order to keep specificity down and
+performance up.</li>
+</ul>
+
+<p>Focussing on these points will keep your selectors a lot more sane and easy to
+work with on changing and long-running projects.</p>
+
+<h3 id="further-reading-2">Further Reading</h3>
+
+<ul>
+  <li><a href="http://csswizardry.com/2012/07/shoot-to-kill-css-selector-intent/"><cite>Shoot to kill; CSS selector intent</cite></a></li>
+  <li><a href="http://csswizardry.com/2013/05/scope-in-css/"><cite>‘Scope’ in CSS</cite></a></li>
+  <li><a href="http://csswizardry.com/2012/05/keep-your-css-selectors-short/"><cite>Keep your CSS selectors short</cite></a></li>
+  <li><a href="http://nicolasgallagher.com/about-html-semantics-front-end-architecture/"><cite>About HTML semantics and front-end architecture</cite></a></li>
+  <li><a href="http://csswizardry.com/2014/03/naming-ui-components-in-oocss/"><cite>Naming UI components in OOCSS</cite></a></li>
+  <li><a href="http://csswizardry.com/2011/09/writing-efficient-css-selectors/"><cite>Writing efficient CSS selectors</cite></a></li>
+</ul>
+
+<hr>
+
+
+
+    <footer class="page-foot">
+
+        <hr class="hr-minor">
+
+        <p class="version">2.0.15</p>
+
+        <p>Last updated: <time datetime="2014-08-20">20 August, 2014</time></p>
+
+        <p>© 2014 <a href="https://twitter.com/csswizardry">Harry Roberts</a></p>
+
+    </footer>
+
+</div>
+
+</body></html>
