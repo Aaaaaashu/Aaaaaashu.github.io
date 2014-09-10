@@ -1,0 +1,28 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?-iubs7o');
+	src:url('fonts/icomoon.eot?#iefix-iubs7o') format('embedded-opentype'),
+		url('fonts/icomoon.woff?-iubs7o') format('woff'),
+		url('fonts/icomoon.ttf?-iubs7o') format('truetype'),
+		url('fonts/icomoon.svg?-iubs7o#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home:before {
+	content: "\e600";
+}
