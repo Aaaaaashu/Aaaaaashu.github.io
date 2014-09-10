@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'icomoon';
-	src:url('fonts/icomoon.eot?-iubs7o');
-	src:url('fonts/icomoon.eot?#iefix-iubs7o') format('embedded-opentype'),
-		url('fonts/icomoon.woff?-iubs7o') format('woff'),
-		url('fonts/icomoon.ttf?-iubs7o') format('truetype'),
-		url('fonts/icomoon.svg?-iubs7o#icomoon') format('svg');
+	src:url('fonts/icomoon.eot?ppibvj');
+	src:url('fonts/icomoon.eot?#iefixppibvj') format('embedded-opentype'),
+		url('fonts/icomoon.woff?ppibvj') format('woff'),
+		url('fonts/icomoon.ttf?ppibvj') format('truetype'),
+		url('fonts/icomoon.svg?ppibvj#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -23,6 +23,57 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-home:before {
+.icon-video-navi:before {
+	content: "\e611";
+}
+.icon-tag:before {
+	content: "\e603";
+}
+.icon-bglogo:before {
+	content: "\e60e";
+}
+.icon-menu:before {
+	content: "\e60f";
+}
+.icon-close:before {
+	content: "\e602";
+}
+.icon-search:before {
+	content: "\e604";
+}
+.icon-heart:before {
+	content: "\e612";
+}
+.icon-unheart:before {
+	content: "\e609";
+}
+.icon-view:before {
+	content: "\e60b";
+}
+.icon-rss:before {
+	content: "\e605";
+}
+.icon-youku:before {
+	content: "\e606";
+}
+.icon-wechat:before {
+	content: "\e607";
+}
+.icon-weibo:before {
+	content: "\e608";
+}
+.icon-down:before {
+	content: "\e60c";
+}
+.icon-up:before {
+	content: "\e60d";
+}
+.icon-play:before {
+	content: "\e610";
+}
+.icon-prev-page:before {
 	content: "\e600";
+}
+.icon-next-page:before {
+	content: "\e601";
 }
