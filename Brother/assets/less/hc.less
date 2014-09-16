@@ -1,0 +1,351 @@
+// BASIC
+//==================================================================
+
+a {
+  color: #fff;
+  &:hover {
+    color: #2e9fff;
+    text-decoration: none;
+  }
+}
+
+.container { width: 1170px; }
+
+
+
+// ANIMATION
+//==================================================================
+.animation {
+  opacity: 0;
+  -webkit-backface-visibility: hidden;
+     -moz-backface-visibility: hidden;
+      -ms-backface-visibility: hidden;
+       -o-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-animation-duration: 1s;
+     -moz-animation-duration: 1s;
+       -o-animation-duration: 1s;
+      -ms-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+     -moz-animation-fill-mode: both;
+       -o-animation-fill-mode: both;
+      -ms-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+
+.fade-left {
+  -webkit-animation-name: fadeInLeft;
+     -moz-animation-name: fadeInLeft;
+       -o-animation-name: fadeInLeft;
+      -ms-animation-name: fadeInLeft;
+          animation-name: fadeInLeft;
+}
+
+
+// NAVBAR
+//==================================================================
+.navbar {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 99;
+  width: 100%;
+  -webkit-transition: all 0.6s ease-in-out;
+     -moz-transition: all 0.6s ease-in-out;
+          transition: all 0.6s ease-in-out;
+  .nav {
+    li {
+      float: left;
+      padding: 16px 20px;
+    }
+  }
+  .hc-logo { }
+  a {
+    font-size: 16px;
+  }
+}
+
+.navbar-pinned {
+  background-color: rgba(255,255,255,0.97);
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+      filter:alpha(opacity=30);
+  z-index: 89;
+  -webkit-box-shadow: 0 0 1px rgba(0,0,0,0.15);
+     -moz-box-shadow: 0 0 1px rgba(0,0,0,0.15);
+          box-shadow: 0 0 1px rgba(0,0,0,0.15);
+  a {
+    color: #7f919e;
+    &:hover {
+      color: #2e9fff;
+      text-decoration: none;
+    }
+  }
+}
+
+// HC-INTRO
+//==================================================================
+#hc-intro {
+  width: 100%;
+  padding-top: 68px;
+  padding-bottom: 68px;
+  background-color: #fafcfc;
+  text-align: center;
+  h2 {
+    font-size: 32px;
+    color: #546673;
+  }
+  p {
+    padding-bottom: 40px;
+    margin: 0 auto;
+    width: 795px;
+    font-size: 18px;
+    color: rgb(53, 58, 61);
+  }
+  .hc-intro-list {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+
+// HC-CASE
+//==================================================================
+#hc-case {
+  padding: 120px 0;
+  height: 992px;
+  .hc-case-one, .hc-case-two {
+    width: 960px;
+    img {
+      width: 442px;
+    }
+    .hc-case-description {
+      width: 424px;
+      h2 {
+        font-weight: 100;
+        font-size: 36px;
+        color: #454545;
+        padding-bottom: 10px;
+      }
+    }
+  }
+  .hc-case-one {
+    padding-bottom: 64px;
+    img {
+      margin-right: 94px;
+    }
+    .hc-case-description {
+      padding-top: 72px;
+    }
+  }
+}
+
+
+// HC-HONOR
+//==================================================================
+#hc-honor {
+  background-color: #fafcfc;
+  padding: 40px 0;
+  .hc-honor-title {
+    background: url("../images/honor-title.png") no-repeat;
+    padding: 20px 0px;
+    width: 159px;;
+  }
+  .hc-honor-list {
+    width: 960px;
+    .hc-honor-3 {
+      float: left;
+      margin-right: 150px;
+    }
+    .hc-honor-last {
+      margin-right: 0px !important;
+    }
+  }
+}
+
+
+
+
+
+
+// FOOTER
+//==================================================================
+footer {
+  background: #546673;
+  color: #e4e7ee;
+  .footer-info {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+    .footer-info-list {
+      width: 242px;
+      li {
+        float: left;
+        padding: 0 16px;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+
+
+
+// keyframes for navbar-pinned
+.navbar-pinned {
+  -webkit-animation: fade-in-down-navbar 0.6s;
+          animation: fade-in-down-navbar 0.6s;
+}
+
+@-webkit-keyframes fade-in-down-navbar {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
+  100% {
+    opacity: 0.97;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-down-navbar {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
+  100% {
+    opacity: 0.97;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+
+
+// keyframes for fadeInLeft
+@-webkit-keyframes fadeInLeft{
+	0%{
+		opacity:0;
+		-webkit-transform: translateX(-20px);
+	}
+
+	100%{
+		opacity:1;
+		-webkit-transform:translateX(0);
+	}
+}
+
+@-moz-keyframes fadeInLeft{
+	0% {
+		opacity:0;
+		-moz-transform:translateX(-20px);
+	}
+
+	100%{
+		opacity:1;
+		-moz-transform:translateX(0);
+	}
+}
+
+@-o-keyframes fadeInLeft{
+	0%{
+		opacity:0;
+		-o-transform:translateX(-20px);
+	}
+
+	100%{
+		opacity:1;
+		-o-transform:translateX(0);
+	}
+}
+
+@-ms-keyframes fadeInLeft{
+	0%{
+		opacity:0;
+		-ms-transform:translateX(-20px);
+	}
+
+	100%{
+		opacity:1;
+		-ms-transform:translateX(0);
+	}
+}
+
+@keyframes fadeInLeft{
+	0%{
+		opacity:0;
+		transform:translateX(-20px);
+	}
+
+	100%{
+		opacity:1;
+		transform:translateX(0);
+	}
+}
+
+
+// keyframes for fadeInRight
+@-webkit-keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(20px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+}
+
+@-moz-keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    -moz-transform: translateX(20px);
+  }
+
+  100% {
+    opacity: 1;
+    -moz-transform: translateX(0);
+  }
+}
+
+@-o-keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    -o-transform: translateX(20px);
+  }
+
+  100% {
+    opacity: 1;
+    -o-transform: translateX(0);
+  }
+}
+
+@-ms-keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    -ms-transform: translateX(20px);
+  }
+
+  100% {
+    opacity: 1;
+    -ms-transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
