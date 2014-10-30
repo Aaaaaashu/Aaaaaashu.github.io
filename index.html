@@ -65,6 +65,7 @@
             font-size: 15px;
             letter-spacing: .12em;
             margin-bottom: 30px;
+            padding-left: 28px;
         }
         p {
             font-size: 14px;
@@ -92,6 +93,20 @@
         .zhihu:hover {
             color: #004ab8;
         }
+        .contact-me {
+          display: block;
+          width: 40px;
+          height: 40px;
+          margin: 0 auto;
+          margin-top: 20px;
+          text-indent: 99999px;
+          background: url(./img/mail.png) no-repeat;
+          background-size: 40px 40px;
+        }
+        .contact-me:hover {
+          background: url(./img/mail-hover.png) no-repeat;
+          background-size: 40px 40px;
+        }
         .touchmove {
             position: absolute;
             top: 0;
@@ -112,12 +127,14 @@
 <div class="container">
     <div id="wrapper">
         <h1>树</h1>
-        <h2>A web developer.&nbsp;</h2>
+        <h2>Hacker & Designer.&nbsp;</h2>
         <p><a class="blog" href="http://www.jianshu.com/users/vCyqyQ/latest_articles" target="_blank">Blog</a></p>
         <p><a class="twitter" href="https://twitter.com/Aaaaaa_Shu" target="_blank">Twitter</a></p>
         <p><a class="github" href="https://github.com/Aaaaaashu" target="_blank">Github</a></p>
         <p><a class="douban" href="http://www.douban.com/people/orangehat/" target="_blank">豆瓣</a></p>
         <p><a class="zhihu" href="http://www.zhihu.com/people/orangehat" target="_blank">知乎</a></p>
+
+        <a class="contact-me" href="mailto:orangehat.rb@gmail.com">contact_me</a>
     </div>
     <canvas class="touchmove"></canvas>
 </div>
