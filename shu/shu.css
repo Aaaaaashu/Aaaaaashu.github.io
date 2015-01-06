@@ -115,7 +115,8 @@ h3     { font-size: 1.6em; }
 h4     { font-size: 1.4em; }
 h5, h6 { font-size: 1.2em; }
 
-h2 + h3 {
+h2 + h3
+h3 + h4 {
   margin-top: 0;
 }
 
@@ -184,17 +185,6 @@ table caption {
   border-bottom: none;
 }
 
-/* 高亮选中 */
-::-moz-selection {
-  background: #08c;
-  color: #fff;
-}
-
-::selection {
-  background: #08c;
-  color: #fff;
-}
-
 strong, b {
   padding-bottom: 1px;
   border-bottom: 1px dotted #000;
@@ -236,7 +226,7 @@ code {
   border: 1px solid #eaeaea;
   border-radius: 4px;
   background-color: #f8f8f8;
-  white-space: nowrap;
+  white-space: pre-wrap;
 }
 
 pre code {
@@ -263,8 +253,19 @@ blockquote {
   margin-left: 2px;
 }
 
-@media only screen and ( max-width: 748px ){
+@media only screen and ( max-width: 36em ){
   blockquote { margin: 1em 0; }
+
+  p {
+    text-align: initial;
+    text-justify: initial;
+  }
+
+  h1     { font-size: 1.6em; }
+  h2     { font-size: 1.4em; }
+  h3     { font-size: 1.2em; }
+  h4     { font-size: 1em; }
+  h5, h6 { font-size: 1em; }
 }
 
 /* 一致化 horizontal rule */

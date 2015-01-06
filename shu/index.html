@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>树</title>
-  <meta name="description" content="不超过150个字符">
-  <meta name="keywords" content="">
-  <meta name="author" content="name, email@gmail.com">
+  <meta name="description" content="网页上百分之九十五的信息是「文字」，大多数人浏览网页的状态就是阅读，也就是你目前正在做的事情. 因此作为一名前端工程师，让文字更好地在网页显示，是一件极其重要的工作.">
+  <meta name="keywords" content="网页字体排印指南">
+  <meta name="Ashu" content="Ashu, orangehat.rb@gmail.com">
 
   <!-- 为移动设备添加 viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
   <link rel="shortcut icon" href="path/to/favicon.ico">
   <link rel="stylesheet" href="shu.css"/>
   <style>
-  html,body{padding:0; margin:0; min-height: 100%; height:100%; background-color: #eee;}
+  html,body{padding:0; margin:0; background-color: #eee;}
   .content {
     max-width: 36em;
     padding: 2em 6em;
@@ -35,6 +35,35 @@
   .ending-2 {
     margin-right: 40px;
   }
+
+  @media (max-width: 36em) {
+    .content {
+      padding: 2em 2em;
+      margin: 0 auto;
+    }
+
+    .table-responsive {
+      width: 100%;
+      margin-bottom: 15px;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      border: 1px solid #dddddd;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+      -webkit-overflow-scrolling: touch;
+    }
+    .table-responsive > table {
+      margin-bottom: 0;
+    }
+    .table-responsive > table > thead > tr > th,
+    .table-responsive > table > tbody > tr > th,
+    .table-responsive > table > tfoot > tr > th,
+    .table-responsive > table > thead > tr > td,
+    .table-responsive > table > tbody > tr > td,
+    .table-responsive > table > tfoot > tr > td {
+      white-space: nowrap;
+    }
+  }
+
   </style>
 </head>
 <body>
@@ -73,104 +102,108 @@
 
   <p>以下列出各种平台下合适的中西文字体：</p>
 
-  <table>
-    <caption>桌面端 Mac, Windows, Linux 上适合网页显示的优秀中文字体</caption>
-    <thead>
-      <tr>
-        <th align="left">Mac</th>
-        <th align="left">Windows</th>
-        <th align="left">Linux</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td align="left">冬青黑体 <br/> Hiragino Sans GB</td>
-        <td align="left">中易宋体 <br/> SimSun</td>
-        <td align="left">文泉驿微米黑 <br/> WenQuanYi Microhei</td>
-      </tr>
-      <tr>
-        <td align="left">黑体-简（华文黑体）<br/> Heiti SC (STHeiti)</td>
-        <td align="left">微软雅黑 <br/> Microsoft YaHei</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td align="left">宋体-简（华文宋体）<br/> Songti SC (STSong)</td>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table>
+      <caption>桌面端 Mac, Windows, Linux 上适合网页显示的优秀中文字体</caption>
+      <thead>
+        <tr>
+          <th align="left">Mac</th>
+          <th align="left">Windows</th>
+          <th align="left">Linux</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">冬青黑体 <br/> Hiragino Sans GB</td>
+          <td align="left">中易宋体 <br/> SimSun</td>
+          <td align="left">文泉驿微米黑 <br/> WenQuanYi Microhei</td>
+        </tr>
+        <tr>
+          <td align="left">黑体-简（华文黑体）<br/> Heiti SC (STHeiti)</td>
+          <td align="left">微软雅黑 <br/> Microsoft YaHei</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td align="left">宋体-简（华文宋体）<br/> Songti SC (STSong)</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <table>
-    <caption>移动端 iOS, Android 上适合网页显示的优秀中文字体</caption>
-    <thead>
-      <tr>
-        <th align="left">iOS</th>
-        <th align="left">Android</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td align="left">黑体-简（华文黑体）<br/> Heiti SC (STHeiti)</td>
-        <td align="left">思源黑体 <br/> Noto Sans CJK SC</td>
-      </tr>
-      <tr>
-        <td align="left"></td>
-        <td align="left"> Droid Sans Fallback</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table>
+      <caption>移动端 iOS, Android 上适合网页显示的优秀中文字体</caption>
+      <thead>
+        <tr>
+          <th align="left">iOS</th>
+          <th align="left">Android</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">黑体-简（华文黑体）<br/> Heiti SC (STHeiti)</td>
+          <td align="left">思源黑体 <br/> Noto Sans CJK SC</td>
+        </tr>
+        <tr>
+          <td align="left"></td>
+          <td align="left"> Droid Sans Fallback</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <table>
-    <caption>主流操作系统上适合网页显示的优秀西文字体</caption>
-    <thead>
-      <tr>
-        <th align="left">无衬线</th>
-        <th align="left">衬线</th>
-        <th align="left">等宽</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td align="left">Lucida Grande</td>
-        <td align="left">Georgia</td>
-        <td align="left">Menlo</td>
-      </tr>
-      <tr>
-        <td align="left">Helvetica Neue</td>
-        <td align="left">Times New Roman</td>
-        <td align="left">Courier</td>
-      </tr>
-      <tr>
-        <td align="left">Arial</td>
-        <td align="left"></td>
-        <td align="left"></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table>
+      <caption>主流操作系统上适合网页显示的优秀西文字体</caption>
+      <thead>
+        <tr>
+          <th align="left">无衬线</th>
+          <th align="left">衬线</th>
+          <th align="left">等宽</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left">Lucida Grande</td>
+          <td align="left">Georgia</td>
+          <td align="left">Menlo</td>
+        </tr>
+        <tr>
+          <td align="left">Helvetica Neue</td>
+          <td align="left">Times New Roman</td>
+          <td align="left">Courier</td>
+        </tr>
+        <tr>
+          <td align="left">Arial</td>
+          <td align="left"></td>
+          <td align="left"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <p>抛开宋/明体长时间作为系统默认字体，所产生的审美疲劳，宋/明体相比黑体是更合适作为内文字体. 大多的宋/明体针对内文设计，横细直粗，造型方正，笔画在小字号的情况下，不会糊在一起，给人一种素雅的感觉. 而黑体笔画粗壮有力，引人注目，更适合作为标题使用.</p>
   <p>但大部分人已经习惯在网页上阅读黑体，以及宋/明体在字重过大的情况下，显示效果还是不太理想. 所以内文默认提供黑体，可选择性的切换宋/明体.</p>
   <p>按照以上表格提供的中文字体，为此我为内文和标题编写两套 <code>font-family</code>. 关于这两套 <code>font-family</code> 的选择和排序，等空闲时，再写一篇文章谈下.</p>
 
   <pre><code>p { font-family: "Georgia", "Times New Roman", "Songti SC", "SimSun", serif; }
-    h1, h2, h3, h4, h5, h6 { font-family: "Lucida Grande", "Helvetica Neue", "Arial", "Hiragino Sans GB", "Noto Sans CJK SC", "Heiti SC", "Microsoft YaHei", "WenQuanYi Microhei", sans-serif; }
-  </code></pre>
+h1, h2, h3, h4, h5, h6 { font-family: "Lucida Grande", "Helvetica Neue", "Arial", "Hiragino Sans GB", "Noto Sans CJK SC", "Heiti SC", "Microsoft YaHei", "WenQuanYi Microhei", sans-serif; }</code></pre>
 
   <h2 id="rhythm">垂直的旋律</h2>
 
   <h3>音阶</h3>
   <p>Robert Bringhurst 在《The Elements of Typographic Style》谈到字号大小之间的比例，形似于音乐中的音阶. 作曲时以某个特定的音阶为基础，才会形成特定的风格. 字号的排版同样如此，有规律的字号变化，才会形成特定的排版风格.</p>
   <p>将内文以 16px 作为字号  <br/>
-    标题 <code>h1, h2, h3, h4, h5, h6</code> 以 16px 作为字号基础，按同比例的递减</p>
+     标题 <code>h1, h2, h3, h4, h5, h6</code> 以 16px 作为字号基础，按同比例的递减</p>
 
     <pre><code>p  { font-size: 16px; }
-      h1 { font-size: 2em; }
-      h2 { font-size: 1.8em; }
-      h3 { font-size: 1.6em; }
-      h4 { font-size: 1.4em; }
-      h5, h6 { font-size: 1.2em; }
-    </code></pre>
+h1 { font-size: 2em; }
+h2 { font-size: 1.8em; }
+h3 { font-size: 1.6em; }
+h4 { font-size: 1.4em; }
+h5, h6 { font-size: 1.2em; }</code></pre>
 
     <h3>节拍</h3>
     <p>此外，Robert Bringhurst 还谈到版式中的空间就像音乐中的时间(Space in typography is like time in music)，言下之意，把握间距（行高）就如把握节拍. 节拍是对时间的分割，倘若抢拍便失去节奏. 文字的间距（行高）亦是对空间的分割，不一致间距（行高）比例，便会失去「垂直的旋律」.</p>
@@ -178,19 +211,17 @@
       标题 <code>h1, h2, h3, h4, h5, h6</code> 以 1.5em 作为行高.</p>
 
       <pre><code>p { line-height: 1.7em; }
-        h1, h2, h3, h4, h5, h6 { line-height: 1.5em; }
-      </code></pre>
+h1, h2, h3, h4, h5, h6 { line-height: 1.5em; }</code></pre>
 
       <h2 id="space">段首缩进 VS 段落间距</h2>
       <p>段落分隔对于中文排版而言也是特别重要，主要以「段首缩进」和「段落间距」两种方式表现，它们的唯一目的就是将段落分隔.</p>
       <p>「段首缩进」主要用于印刷书籍，节省纵向空间，保持文本连贯，但一般在网页上的阅读速度较快，会使文字过于密集产生压力. 相反「段落间距」主要用于网页，充分利用网页无限的纵向空间，保障文本块的整洁，同时给予长篇阅读休息的间隙. 所以一般网页排版，会考虑选择「段落间距」，可以设置以下属性实现「段落间距」.</p>
 
       <pre><code>p { margin-bottom: 1.7em; }
-        h1, h2, h3, h4, h5, h6 {
-          margin-top: .7em;
-          margin-bottom: 0.2em;
-        }
-      </code></pre>
+h1, h2, h3, h4, h5, h6 {
+  margin-top: .7em;
+  margin-bottom: 0.2em;
+}</code></pre>
 
       <h2 id="justify">对齐</h2>
       <p>汉字的方块性质构成了汉字独有的艺术美感，使其具有工整的特点，从而显现出中文排版的重要原则：所有元素都是正方体. 但从二十世纪开始使用标点后，以及中西文混排的情况越来越多，为了保证「禁则处理」和「齐头尾」实现，可能需要在不同条件下进行适当的断词处理.</p>
@@ -203,21 +234,19 @@
       <p>可以设置以下属性实现「齐头尾」，其中<code>inter-ideographic</code>意思是「通过调整单词和字符之间的留白来实现两端对齐」.</p>
 
       <pre><code>p {
-        text-align: justify;
-        text-justify: inter-ideographic;
-      }
-    </code></pre>
+text-align: justify;
+text-justify: inter-ideographic;
+}</code></pre>
 
     <p>但这样的「齐头尾」并不是完美的，主要由于技术遗留原因，在 Windows 和 Linux 上的 webkit 浏览器并没有实现 <code>inter-ideographic</code> 导致中西文混排的时候，容易出现过度拉伸字间距的情况.</p>
     <p>
-      <img src="http://orangehat.u.qiniudn.com/justify.png" alt="justify" />
+      <img src="images/justify.png" alt="justify" />
       <span class="img-caption">左侧: inter-ideographic | 右侧: break-all</span>
     </p>
     <p>为此有一种不优雅的解决方案，在极易出现字间距拉伸的小尺寸屏幕（手机）上使用「断词处理」，避免字间距拉伸，可是这样也带来「无视避头尾规则」和「西文单词断词」的坏毛病. 这是用一种不优雅解决另一种不优雅，按需抉择吧.</p>
     <p>可以设置以下属性进行「断词处理」</p>
 
-    <pre><code>p { word-break: break-all; }
-    </code></pre>
+    <pre><code>p { word-break: break-all; }</code></pre>
 
     <h2 id="explain">未作说明...</h2>
     <ul>
@@ -247,5 +276,4 @@
   </div>
 
 </body>
-<script src="http://static.segmentfault.com/build/3rd/snowfall.min.js"></script>
 </html>
