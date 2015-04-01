@@ -1,0 +1,336 @@
+@charset "utf-8";
+
+/* Normalize
+   ========================================================================== */
+
+/* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
+html {
+  color: #333;
+  background: #fff;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-rendering: optimizelegibility;
+  /*-moz-osx-font-smoothing: grayscale;*/
+  /*-webkit-font-smoothing: grayscale;*/
+
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* 内外边距通常让各个浏览器样式的表现位置不同 */
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+  margin: 0;
+  padding: 0;
+}
+
+/* 重设 HTML5 标签, IE 需要在 js 中 createElement(TAG) */
+article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+  display: block;
+}
+
+/* HTML5 媒体文件跟 img 保持一致 */
+audio, canvas, video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+/* 要注意表单元素并不继承父级 font 的问题 */
+body, button, input, select, textarea {
+  font-weight: 400;
+  font-size: 1em;
+  line-height: 1.7;
+  font-family: serif;
+}
+
+/* 去除 IE6 input/button 多余的空白 */
+button, input {
+  *width: auto;
+  *overflow: visible;
+
+  /* 让 input 和 button 一样高 */
+  line-height: normal;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+/* 去掉各Table cell 的边距并让其边重合 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* IE bug fixed: th 不继承 text-align */
+th {
+  text-align: inherit;
+}
+
+/* 去除默认边框 */
+fieldset, img{
+  border:0;
+}
+
+/* 解决 IE6-7 图片缩放锯齿问题 */
+img{
+  -ms-interpolation-mode:bicubic;
+}
+
+/* ie6 7 8(q) bug 显示为行内表现 */
+iframe{
+  display:block;
+}
+
+/* Typography-main
+   ========================================================================== */
+
+/* 内文与段落 */
+pre, ul, ol, dl, form, hr, table, blockquote {
+  margin-bottom: 1.7em;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1.7em;
+  font-size: 18px;
+  line-height: 1.7em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: .7em;
+  margin-bottom: .2em;
+  font-weight: 200;
+  line-height: 1.5em;
+  color: #000;
+}
+
+h1     { font-size: 2em; }
+h2     { font-size: 1.8em; }
+h3     { font-size: 1.6em; }
+h4     { font-size: 1.4em; }
+h5, h6 { font-size: 1.2em; }
+
+h2 + h3
+h3 + h4 {
+  margin-top: 0;
+}
+
+
+/* 图像 */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 10px;
+  box-shadow: 1px 1px 4px 1px #cfcfcf;
+}
+
+.img-caption {
+  display: block;
+  color: #999;
+  font-size: 14px;
+  line-height: 1.2em;
+  text-align: center;
+}
+
+/* 无序列表 有序列表 */
+ul {
+  margin-left: 1.3em;
+  list-style: disc;
+}
+
+ol {
+  margin-left: 1.6em;
+  list-style: decimal;
+}
+
+li ul,
+ul ul,
+ol ul {
+  list-style-type: circle;
+}
+
+li ul,
+li ol,
+ul ul,
+ul ol,
+ol ul,
+ol ol {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 2em;
+}
+
+/* 表格 */
+table th,
+table td,
+table caption {
+  padding: 0.5em 1em;
+  border: 1px solid #ddd;
+  color: #666;
+}
+
+table th {
+  background-color: #fbfbfb;
+}
+
+table thead th {
+  background-color: #f1f1f1;
+}
+
+table caption {
+  border-bottom: none;
+}
+
+strong, b {
+  padding-bottom: 1px;
+  border-bottom: 1px dotted #000;
+  font-weight: normal;
+  font-variant: normal;
+  color: #000;
+}
+
+/* 让链接显示下划线 */
+a {
+  padding-bottom: 3px;
+  border-bottom: 1px solid #aaa;
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #000;
+  border-bottom-color: #000;
+}
+
+/* 代码片断 */
+pre, code, pre tt {
+  font-family: Courier, "Courier New", monospace;
+}
+
+pre {
+  display: block;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1em 1.5em;
+  background: #f8f8f8;
+  overflow: auto;
+}
+
+code {
+  margin: 0 2px;
+  padding: 0 5px;
+  border: 1px solid #eaeaea;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  white-space: pre-wrap;
+}
+
+pre code {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-size: 14px;
+  background-color: transparent;
+  white-space: pre;
+}
+
+/* 去掉列表前的标识, li 会继承，大部分网站通常用列表来很多内容，所以应该当去 */
+/*ul, ol{*/
+  /*list-style:none;*/
+/*}*/
+
+/* 块/段落引用 */
+blockquote {
+  position: relative;
+  color: #999;
+  font-weight: 300;
+  border-left: 2px solid #cfcfcf;
+  padding-left: 1em;
+  margin-left: 2px;
+}
+
+@media only screen and ( max-width: 36em ){
+  blockquote { margin: 1em 0; }
+
+  p {
+    text-align: initial;
+    text-justify: initial;
+  }
+
+  h1     { font-size: 1.6em; }
+  h2     { font-size: 1.4em; }
+  h3     { font-size: 1.2em; }
+  h4     { font-size: 1em; }
+  h5, h6 { font-size: 1em; }
+}
+
+/* 一致化 horizontal rule */
+hr {
+  border: none;
+  border-bottom: 3px double #eee;
+  margin-bottom: 10px;
+  height: 10px;
+  *margin: -7px 0 2px;
+}
+
+
+/* Typography-other
+   ========================================================================== */
+
+/* Firefox 以外，元素没有下划线，需添加 */
+acronym, abbr{
+  border-bottom: 1px dotted;
+  font-variant: normal;
+}
+
+/* 添加鼠标问号，进一步确保应用的语义是正确的（要知道，交互他们也有洁癖，如果你不去掉，那得多花点口舌） */
+abbr{
+  cursor: help;
+}
+
+/* 一致的 del 样式 */
+del{
+  text-decoration: line-through;
+}
+
+address, caption, cite, dfn, em, th, var{
+  font-style: normal;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+/* 统一上标和下标 */
+sub, sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+}
+
+:root sub, :root sup {
+  vertical-align: baseline; /* for ie9 and other modern browsers */
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* 底部印刷体、版本等标记 */
+small,
+figcaption {
+  font-size: 0.9em;
+  color: #888;
+}
+
+/* 可拖动文件添加拖动手势 */
+[draggable] {
+  cursor: move;
+}
