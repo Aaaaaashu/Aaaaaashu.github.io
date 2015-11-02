@@ -29,6 +29,7 @@
             margin: 0;
         }
         body {
+          position: relative;
           font-family: 'Rhythm Italic Serif', 'YuMincho', serif;
           color: #333;
         }
@@ -38,12 +39,21 @@
             height: 100%;
             overflow: hidden;
         }
+
         #wrapper {
             display: table-cell;
             vertical-align: middle;
             text-align: center;
             width: 320px;
         }
+
+        .tree {
+          position: absolute;
+          top: 0;
+          left: -28px;
+          transform: rotate(180deg);
+        }
+
         h1, h2 {
             margin: 0;
         }
@@ -105,6 +115,8 @@
         <p><a class="email" href="mailto:orangehat.rb@gmail.com">email</a></p>
     </div>
 </div>
+
+<img class="tree" src="./img/tree.jpeg" alt="">
 
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
