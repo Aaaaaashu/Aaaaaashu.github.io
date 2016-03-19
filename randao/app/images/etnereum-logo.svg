@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="246px" height="397px" viewBox="0 0 246 397" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="etnereum-logo" transform="translate(1.000000, 0.000000)">
+            <g id="randao-progress">
+                <path d="M121.9,0.9 L0.4,202.5 L121.9,147.3 L121.9,0.9 Z" id="Shape" stroke="#8A92B2"></path>
+                <path d="M121.9,147.3 L0.4,202.5 L121.9,274.4 L121.9,147.3 Z" id="Shape" stroke="#62688F"></path>
+                <path d="M243.4,202.5 L121.9,0.9 L121.9,147.3 L243.4,202.5 Z" id="Shape" stroke="#62688F"></path>
+                <path d="M121.9,274.4 L243.4,202.5 L121.9,147.3 L121.9,274.4 Z" id="Shape" stroke="#454A75"></path>
+                <path d="M0.4,225.6 L121.9,396.8 L121.9,297.4 L0.4,225.6 Z" id="Shape" stroke="#8A92B2"></path>
+                <path d="M122,297.4 L122,396.8 L243.6,225.6 L122,297.4 Z" id="Shape" stroke="#62688F"></path>
+            </g>
+        </g>
+    </g>
+</svg>
