@@ -63,7 +63,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _scrollspy = __webpack_require__(2);
 	
 	var _scrollspy2 = _interopRequireDefault(_scrollspy);
-
+	
+	__webpack_require__(3);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
@@ -386,6 +388,45 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	  });
 	}(jQuery);
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var Ethfans = function ($) {
+	
+	  $(document).on('ready', function () {
+	    var $navbar = $('#navbar');
+	    var $navbarIconSearch = $navbar.find('.icon-search');
+	    var $navbarSearch = $navbar.find('.search');
+	
+	    var $banners = $('#recommend-banners');
+	    var $hotBannerItem = $banners.find('.hot-banner').children('.item');
+	
+	    $navbarIconSearch.on('click', function () {
+	      $navbar.addClass('search-focus');
+	      $navbarSearch.focus();
+	    });
+	
+	    $navbarSearch.on('focusout', function () {
+	      $navbar.removeClass('search-focus');
+	    });
+	
+	    $hotBannerItem.hover(function () {
+	      $hotBannerItem.removeClass('hover');
+	      $(this).addClass('hover');
+	    });
+	  });
+	}(jQuery);
+	
+	exports.default = Ethfans;
+	module.exports = exports['default'];
 
 /***/ }
 /******/ ])
