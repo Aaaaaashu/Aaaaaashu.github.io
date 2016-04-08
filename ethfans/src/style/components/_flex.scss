@@ -1,0 +1,122 @@
+/* ========================================================================
+   Component: Flex
+ ========================================================================== */
+
+.vertical-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vertical-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;;
+}
+
+.flex {
+  display: flex;
+}
+
+/* Alignment
+ ========================================================================== */
+/*
+ * Vertical alignment
+ */
+
+.flex-top {
+  align-items: flex-start;
+}
+
+.flex-middle {
+  align-items: center;
+}
+
+.flex-bottom {
+  align-items: flex-end;
+}
+
+/*
+ * Horizontal alignment
+ */
+
+.flex-center {
+  justify-content: center;
+}
+
+.flex-right {
+  justify-content: flex-end;
+}
+
+.flex-space-between {
+  justify-content: space-between;
+}
+
+.flex-space-around {
+  justify-content: space-around;
+}
+
+/* Direction
+ ========================================================================== */
+
+.flex-row-reverse {
+  flex-direction: row-reverse;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-column-reverse {
+  flex-direction: column-reverse;
+}
+
+/* Wrap
+ ========================================================================== */
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+
+/*
+ * Horizontal alignment
+ */
+
+.flex-wrap-top {
+  align-content: flex-start;
+}
+
+.flex-wrap-middle {
+  align-content: center;
+}
+
+.flex-wrap-bottom {
+  align-content: flex-end;
+}
+
+.flex-wrap-space-between {
+  align-content: space-between;
+}
+
+.flex-wrap-space-around {
+  align-content: space-around;
+}
+
+/* Item ordering
+ ========================================================================== */
+
+.flex-order-first {
+  order: -1;
+}
+
+.flex-order-last {
+  order: 99;
+}

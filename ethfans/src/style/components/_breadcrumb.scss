@@ -1,0 +1,24 @@
+.breadcrumb {
+  display: flex;
+  padding: $breadcrumb-padding-vertical 0;
+  margin-bottom: 1rem;
+  list-style: none;
+
+  > li {
+
+    a {
+      color: #51a7e8;
+    }
+    
+    + li::before {
+      padding-right: .5rem;
+      padding-left: .5rem;
+      color: $breadcrumb-divider-color;
+      content: "#{$breadcrumb-divider}";
+    }
+  }
+
+  > .active {
+    color: $breadcrumb-active-color;
+  }
+}

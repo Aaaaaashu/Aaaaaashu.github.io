@@ -1,0 +1,53 @@
+$ethfans-primary: #343536;
+$ethfans-blue: #35a2f4;
+$ethfans-primary-text: lighten($ethfans-primary, 10%);
+$ethfans-secondary-text: lighten($ethfans-primary-text, 30%);
+$ethfans-link: #7089a9;
+$ethfans-dividers: lighten($ethfans-primary, 70%);
+$ethfans-bg: #ECF0F1;
+
+
+
+body {
+  background-color: darken(#f3f6f9, 3%);
+
+  a {
+    transition: all .5s;
+  }
+
+  svg path {
+    all: inherit;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  width: 1180px;
+}
+
+.box {
+  border-radius: 2px;
+  margin-bottom: 1em;
+  background-color: #fff;
+  box-shadow: 0 0 1px rgba(0,0,0,.15);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: $ethfans-secondary-text;
+  cursor: pointer;
+}
+
+@import "ethfans/header";
+@import "ethfans/banner";
+@import "ethfans/news-list";
+@import "ethfans/ether-price";
+@import "ethfans/hot-topic";
+@import "ethfans/newsletter";
+@import "ethfans/footer";
+
+@import "ethfans/post";
+@import "ethfans/kudo";
+
+@import "ethfans/community";

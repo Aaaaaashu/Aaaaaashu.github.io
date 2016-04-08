@@ -1,0 +1,45 @@
+
+
+  .ether-market {
+    position: relative;
+    width: 308px;
+    height: 150px;
+    border-radius: 2px;
+    background-color: #fff;
+    box-shadow: 0 0 1px rgba(0,0,0,.15);
+    margin-bottom: 1em;
+
+    .ether-price {
+      display: flex;
+      justify-content: space-around;
+
+      .item {
+        padding: 1em;
+
+        .title {
+          margin-bottom: 8px;
+          color: $ethfans-secondary-text;
+          font-size: 12px;
+        }
+
+        .price {
+          font-size: 24px;
+        }
+
+        .change {
+          font-size: 12px;
+
+          &.positive { color: #F44336; }
+          &.negative { color: #4CAF50; }
+        }
+      }
+    }
+
+    .more {
+      position: absolute;
+      bottom: 8px;
+      right: 10px;
+      color: $ethfans-secondary-text;
+      font-size: 12px;
+    }
+  }

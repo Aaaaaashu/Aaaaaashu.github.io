@@ -1,0 +1,112 @@
+
+
+
+.article {
+  width: 100%;
+}
+
+
+.navbar-wrapper {
+  width: 100%;
+  height: 80px;
+  margin-bottom: 2em;
+  background: rgba(255,255,255,.97);
+  box-shadow: 0 0 1px rgba(0,0,0,.15);
+  line-height: 80px;
+}
+  .navbar {
+    position: relative;
+    width: 1180px;
+    margin: 0 auto;
+
+    &.search-focus {
+      .navbar-main .nav {
+        opacity: 0;
+      }
+
+      .navbar-aside {
+        .icon-search {
+          fill: $ethfans-blue;
+        }
+
+        .search {
+          width: 920px;
+          padding: $input-padding-y $input-padding-x;
+          color: $ethfans-blue;
+        }
+      }
+
+    }
+
+    .navbar-main {
+      display: flex;
+
+      .logo {
+        margin: 0;
+        color: $ethfans-primary;
+        font-size: 18px;
+        line-height: 80px;
+      }
+
+      .nav {
+        margin-left: 2em;
+        transition: opacity .5s;
+
+        a {
+          margin-left: 1.5em;
+          color: $ethfans-secondary-text;
+          transition: color .5s;
+
+          &.active,
+          &:hover {
+            color: $ethfans-blue;
+          }
+
+          &:first-child {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+
+    .navbar-aside {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+
+      .icon-search {
+        width: 24px;
+        height: 24px;
+        margin-top: 28px;
+        fill: $ethfans-secondary-text;
+        cursor: pointer;
+
+        &:hover {
+          fill: $ethfans-blue;
+        }
+      }
+
+      .search {
+        @include form-control-size(0, 80px, $input-padding-y, $input-padding-x, $font-size-small, $input-line-height);
+        @include form-control-variant($input-color, none, #fff);
+        transform: translateY(-2px);
+        transition: all .8s ease-in-out;
+        box-sizing: border-box;
+        padding: 0;
+      }
+
+      .entry {
+        margin-left: 1em;
+
+        a {
+          margin-left: 1em;
+          color: $ethfans-secondary-text;
+
+          &:hover {
+            color: $ethfans-blue;
+          }
+        }
+      }
+    }
+  }

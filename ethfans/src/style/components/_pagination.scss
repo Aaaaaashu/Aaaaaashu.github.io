@@ -1,0 +1,93 @@
+$ethfans-primary: #343536;
+$ethfans-primary-text: lighten($ethfans-primary, 10%);
+$ethfans-secondary-text: lighten($ethfans-primary-text, 30%);
+
+$page-color: $ethfans-secondary-text;
+$page-color-active: $ethfans-primary-text;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 1em 0;
+  margin-bottom: 1em;
+
+  .item {
+    @include border-round(36px);
+    border: 1px solid transparent;
+    margin: 0 8px;
+    color: $page-color;
+    text-decoration: none;
+    text-align: center;
+    line-height: 34px;
+    transition: all .15s ease-in-out;
+
+    &:hover {
+      border: 1px solid $page-color;
+    }
+
+    &:active {
+      border: 1px solid $page-color-active;
+      color: #fff;
+      background-color: $page-color-active;
+    }
+
+    &.previous,
+    &.next,
+    &.ellipsis {
+      width: auto;
+      height: auto;
+      font-size: 14px;
+
+      &:active,
+      &:hover {
+        border: 1px solid transparent;
+        color: $page-color-active;
+        background-color: transparent;
+      }
+
+      &.disabled {
+        cursor: not-allowed;
+        &:hover { color: $page-color; }
+      }
+    }
+
+    &.previous {
+      margin-right: 16px;
+    }
+
+    &.ellipsis {
+      cursor: default;
+      &:hover { color: $page-color; }
+    }
+
+    &.active {
+      color: $page-color;
+      border: 1px solid $page-color;
+      cursor: default;
+    }
+  }
+}
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 0;
+
+  .item {
+    padding: $pager-padding-y $pager-padding-x;
+    border: 1px solid $pager-border-color;
+    border-radius: $pager-border-radius;
+    background-color: $pager-bg;
+
+    &:hover,
+    &:focus {
+      color: $pager-hover-color;
+    }
+
+    &.disabled {
+      color: $pager-disabled-color;
+      background-color: $pager-bg;
+      cursor: not-allowed;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+
+.subscribe {
+  width: 308px;
+  border-radius: 2px;
+  background-color: #fff;
+  box-shadow: 0 0 1px rgba(0,0,0,.15);
+  margin-bottom: 1em;
+
+  form {
+    padding: 1em;
+    text-align: center;
+
+    .form-control {
+      margin-bottom: 1em;
+    }
+
+    .btn {
+      @include button-size(100%, 36px, $font-size-small, 2px);
+    }
+  }
+}
