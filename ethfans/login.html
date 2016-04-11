@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link href="./dist/css/river.min.css" rel='stylesheet' type='text/css'>
+</head>
+<body style="background-color: #fff">
+  <div class="navbar-wrapper">
+    <header id="navbar" class="navbar">
+      <main class="navbar-main">
+        <a href="/">
+          <h1 class="logo">此处应有Logo</h1>
+        </a>
+
+        <nav class="nav">
+          <a class="active" href="">资讯</a>
+          <a href="">社区</a>
+          <a href="">知识库</a>
+          <a href="">活动</a>
+        </nav>
+      </main>
+
+      <aside class="navbar-aside">
+        <svg class="icon-search">
+          <use xlink:href="./dist/svg/svg.svg#icon-search" />
+        </svg>
+
+        <form action="">
+          <input class="search form-field" type="text" placeholder="Search">
+        </form>
+
+        <div class="entry">
+          <a href="">登录</a>
+          <a href="">注册</a>
+        </div>
+      </aside>
+    </header>
+  </div>
+
+  <div class="register-container">
+    <form class="register-form" action="">
+      <header>
+        <h1 class="caption">注册新用户</h1>
+      </header>
+      <div class="form-group">
+        <input class="form-control" type="text" placeholder="Email">
+      </div>
+
+      <div class="form-group">
+        <input class="form-control" type="text" placeholder="用户名">
+      </div>
+
+      <div class="form-group">
+        <input class="form-control" type="password" placeholder="密码（字母，数字，至少6位）">
+      </div>
+
+      <button class="btn btn-primary btn-block" type="submit">注册</button>
+    </form>
+
+    <div class="third-login">
+      <header>
+        <h2 class="caption">你还可以通过以下方式登录</h2>
+      </header>
+      <ul class="sns-list vertical-center">
+        <li class="item">
+          <a href="">
+            <svg class="icon icon-qq">
+              <use xlink:href="./dist/svg/svg.svg#icon-qq" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="login-link">
+      <a class="btn btn-primary-outline btn-block" href="">已有账号？登录</a>
+    </div>
+  </div>
+
+  <div class="login-container">
+    <form class="login-form" action="">
+      <header>
+        <h1 class="caption">登录</h1>
+      </header>
+
+      <div class="form-group">
+        <input class="form-control" type="text" placeholder="Email">
+      </div>
+
+      <div class="form-group">
+        <input class="form-control" type="password" placeholder="密码">
+      </div>
+
+      <button class="btn btn-primary btn-block" type="submit">登录</button>
+    </form>
+
+    <div class="third-login">
+      <header>
+        <h2 class="caption">你还可以通过以下方式登录</h2>
+      </header>
+      <ul class="sns-list vertical-center">
+        <li class="item">
+          <a href="">
+            <svg class="icon icon-qq">
+              <use xlink:href="./dist/svg/svg.svg#icon-qq" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="register-link">
+      <a class="btn btn-primary-outline btn-block" href="">还没有账号？立即注册</a>
+      <a class="btn btn-secondary-outline btn-block" href="">忘记密码？重置</a>
+    </div>
+  </div>
+
+  <div class="forget-password-container">
+    <form class="forget-password-form" action="">
+      <header>
+        <h1 class="caption">重置密码</h1>
+      </header>
+
+      <div class="form-group">
+        <input class="form-control" type="text" placeholder="Email">
+      </div>
+
+      <button class="btn btn-primary-outline btn-block" type="submit">发送重置密码邮件</button>
+    </form>
+  </div>
+
+  <script src="./src/script/jquery.min.js"></script>
+  <script src="./dist/js/river.js"></script>
+</body>
+</html>
