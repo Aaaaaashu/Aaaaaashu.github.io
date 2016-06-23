@@ -1,0 +1,67 @@
+<!doctype html><html lang=zh-hans><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=description content=""><meta name=viewport content="width=device-width,initial-scale=1"><title>Cryptape | CITA</title><meta name=msapplication-tap-highlight content=no><link rel=manifest href=manifest.json><meta name=theme-color content=#2F3BA2><link rel=stylesheet href=styles/post.css><nav class=navbar><a href=/countdown.html>Cryptape</a></nav><article class=rhythm><header class=title>韵律</header><main class=content><h1>简介</h1><p><a href=https://github.com/Aaaaaashu/Rhythm>Rhythm</a>，基于「垂直韵律」构建的中文网页排版框架。<p>95% 的网页内容来源于文本<sup><a id=fnref:1 href=#fn:1>[1]</a></sup>，这意味着，作为一名工程师／设计师需要花费相当多的精力在字体排印上。但现实却不是如此，绝大多数工程师／设计师仅停留在解决可读性，仅有少数人追求更好的中文阅读体验。这就是 Rhythm 制作的初衷，在保持简单易用的前提下，提供一套专为中文网页排版处理的框架。<h2 id=rhythm>韵律</h2><p>垂直的韵律是一种设计原则，保持垂直的空间具有一致的重复、渐变、交替的比例。<p>《The Elements of Typographic Style》的作者 Robert Bringhurst 曾提到：「若版面要有视觉韵律感，重点在于<strong>颜色</strong>，不是五颜六色的颜色，而是黑字在白纸上所构成明暗程度的颜色」。<p>所谓明暗程度的颜色，实际由<em>字号</em>与<em>间距</em>所构成。若字号与间距拥有重复、渐变、交替的比例时，则形成韵律感。韵律感会让读者不自觉地寻找一种规律、可预测的模式，从而沉浸其中，感到舒适。<figure><img src=./images/rhythm.jpg alt=""><figcaption>Elements of Typographic Style</figcaption></figure><h3>音阶</h3><p>字号大小之间的比例，如同音乐中的音阶。作曲时以特定的音阶为基础，会形成特定的音乐风格（如：大调音阶明亮、小调音阶忧郁）。字号在排版当中亦是如此，以特定的字号比例为基础，才会形成特定的排版风格。<p>在 Rhythm中，字号以 15px 为基础递增或递减，主要设置如下：<pre><code>body { font-size: 15px; }
+h1 { font-size: 1.8rem; }
+h2 { font-size: 1.6rem; }
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.2rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1.2rem; }
+p  { font-size: 1rem; }
+small { font-size: 0.8rem; }
+</code></pre><h3>节拍</h3><p>间距就像音乐中的时间，如同节拍。节拍是对时间的分割，倘若抢拍便失去节奏。间距则是对空间的分割，不一致的间距变化，便会失去垂直的韵律。<p>所谓<em>间距</em>，在网页排版中通过行距<code>line-height</code>和内／外边距<code>padding, margin</code>构成。<p>垂直的韵律关键在于<em>基本间距</em>，通过基本间距决定当前文本如何选择对应的行距<code>line-height</code>和内／外边距<code>padding, margin</code>，保证一致的垂直空间比例。<p>在 Rhythm 中，我们选择 24px 作为基本间距。从而行距<code>line-height</code>和内／外边距<code>padding, margin</code>以 24px 为倍数计算。例如：正文文本行距与下边距皆为 24px，而标题则稍有不同，行距均重置为 1 em，上下边距之和为 24px 倍数，上边距为下边距的三倍数值。<pre><code>p {
+line-height: 1.6em;   // 24px
+margin-bottom: 1.6em; // 24px
+}
+
+h1 {
+  line-height: 1em;
+  margin-top: 1.33em;    // 36px
+  margin-bottom: 0.44em; // 12px
+}
+</code></pre><h2>中文排版基础</h2><h3>样式标准化</h3><p>Rhythm 采用 <a href=https://github.com/10up/sanitize.css>sanitize.css</a> 解决浏览器渲染元素一致性问题，并实现最佳实践（如：全局默认 <code>a</code> 元素没有底部装饰线，以及 <code>nav ol, nav ul</code> 没有相应的列表样式等等）。<p>Rhythm 在此基础上，对默认样式进行适当的改造，以符合中文排版的要求。<h4>超链接</h4><p>超链接 <code>a</code> 元素，默认样式包含 <code>text-decoration: underline;</code>，将其修改为自定义底部装饰线，避免中文汉字与默认下划线相接，出现 十 为 土 此类不易辨认的情况。此外添加适当的左右间距，避免相邻的超链接 <code>a</code> 元素底部装饰线相接。<pre><code>a {
+  border-bottom: 1px solid #333;
+  margin: 0.125em 0;
+  text-decorantion: none;
+
+  &amp;:hover,
+  &amp;:visited,
+  &amp;:link {
+    text-decorantion: none;
+  }
+
+  &amp;:hover {
+    color: Black;
+    border-bottom: 1px solid black;
+  }
+
+  &amp;:visited {
+    color: #7d7d7d;
+    border-bottom: 1px dotted #9f9f9f;
+  }
+
+  &amp;:link {
+    color: #5c5c5c;
+    border-bottom: 1px solid #a4a4a4;
+  }
+}
+</code></pre><h4>强调</h4><p><code>&lt;em&gt;</code> 元素与 <code>&lt;strong&gt;</code> 元素皆表示强调，但其语义有着微妙的不同。在 HTML5 草案当中，前者为 emphasized text，表示上下文中的语气加重；后者为 important text，表示在上下文中的重要性。<p><code>&lt;strong&gt;</code> 元素通过加粗字重表示其重要性。而 <code>&lt;em&gt;</code> 元素则使用 <code>text-emphasis</code> 添加着重号样式，在浏览器不支持的情况下，可回退为伪元素方案：<pre><code>em {
+  position: absolute;
+  top: 0.65em;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  content: "・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・";
+}
+</code></pre><h4>缩进</h4><p>有序列表 <code>&lt;ol&gt;</code> 元素、无序列表 <code>&lt;ul&gt;</code> 元素，以及区块引用 <code>&lt;blockquote&gt;</code> 元素，在浏览器中默认 <code>40px</code> 缩进，将其修改为 2em（两个汉字宽度）缩进，以便上下文对齐。<blockquote><p>一件事要做好，岂能凭你心中有一点喜欢？有一点迷恋？三天浇点水，五天上点肥？<p>少年狂妄，自以为聪明。把表面的一些由头借来，实际标榜自己为至情至性之人。这也做做，那也试试，好听人评价个多才多艺。近年来国家大兴经济，文人纷纷“下海”，我也曾与人发议论说作家的智商是足够经商的。最近由读《花经》而获顿悟：人的一生只能做一件事。政客们终身搞阴谋，商人们终身搞欺骗，情种终身搞爱情（比如贾宝玉），黄岳渊先生终身搞花草。一生的时间并不多，一生的精力也不多，要搞好一件事实在不容易。用去一生，搞好了一件事，那也就够可以了。世上不知多少聪明人，一生没有搞好一件事。<footer>——池莉</footer></blockquote><h3>标题</h3><p>标题的字号以及上下边距在<a href=#rhythm>韵律</a>已有说明，在此另外说明三点:<ol><li>标题语义化<li>标题为宋体时的样式处理<li>标题连续出现时，如何收紧？</ol><h4>标题语义化</h4><p>网页排版中的许多概念源自书籍印刷，其中标题为了区分文本内容而存在。网页中 <code>&lt;h1&gt; ~ &lt;h6&gt;</code> 亦是如此，我们可以将其类比为书籍中的元素，方便理解其语义，设定合适的样式：<ol><li>书的名称：<code>h1</code><li>书的每个章节标题: <code>h2</code><li>章节内的文章标题: <code>h3</code><li>小标题/副标题: <code>h4, h5, h6</code></ol><h4>标题为宋体时的样式处理</h4><p>当标题为宋体时（Rhythm 中的标题默认为宋体），需加强字重和增加字间距，令其与内文有所差异，突出标题效果。<h4>标题连续出现时，如何收紧</h4><ol><li>小级标题对大级标题收紧、同级标题互相收紧；<li>大级标题，不对小级标题收紧；<li>一级标题，不对一级标题收紧；</ol><h2>待续</h2><ul><li>标点修正<li>禁则处理<li>标点挤压<li>行尾点号悬挂<li>中西文混排<li>對齊處理</ul><div class=ref><h3>注</h3><ol><li>WEB DESIGN IS 95% TYPOGRAPHY<a id=fn:1 href=#fnref:1>↩</a></ol></div></main></article><script>(function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-XXXXX-X', 'auto');
+    ga('send', 'pageview');</script>
